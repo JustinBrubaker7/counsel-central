@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS counseldb;
+CREATE DATABASE counseldb;
