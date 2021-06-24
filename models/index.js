@@ -1,3 +1,5 @@
-const Counselor = require("./couselor")
+const Counselor = require("./counselor");
+const Center = require("./center");
+const Resident = require("./resident");
 
-module.exports = { Counselor }
+module.exports = { Counselor, Center, Resident };

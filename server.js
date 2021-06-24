@@ -1,8 +1,8 @@
 const express = require("express");
 const path = require("path");
+const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const sequelize = require("./config/connection");
-const session = require("express-session");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -33,7 +33,7 @@ app.use("/api", apiRoutes);
 
 // Send every request to the React app
 // Define any API routes before this runs
-app.get("*", function(req, res) {
+app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
