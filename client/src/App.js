@@ -3,6 +3,7 @@ import './App.css';
 import './index.css';
 import AppNav from './components/AppNav'
 import ExternalNav from './components/ExternalNav'
+import HomeExternal from './pages/HomeExternal';
 
 
 
@@ -15,7 +16,8 @@ function App() {
   return (
     <>
 
-    {!loggedIn ? <ExternalNav /> : <AppNav />}
+    {!loggedIn ? <HomeExternal /> : <AppNav />}
+    
     
     </>  
   );
