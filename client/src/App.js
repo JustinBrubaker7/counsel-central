@@ -1,26 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import './index.css';
 import AppNav from './components/AppNav'
+import ExternalNav from './components/ExternalNav'
+import HomeExternal from './pages/HomeExternal';
+
 
 
 
 
 function App() {
 
+  const [loggedIn, setLoggedIn] = useState(false)
+
   return (
     <>
-    <AppNav />
+
+    {!loggedIn ? <HomeExternal /> : <AppNav />}
+    
+    
     </>  
   );
 }
 
-function Home() {
-  return <h1>Home</h1>;
-}
-
-function About() {
-  return <h1>About</h1>;
-}
 
 export default App;
