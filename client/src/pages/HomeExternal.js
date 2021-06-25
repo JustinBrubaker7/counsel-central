@@ -5,6 +5,7 @@ import TeamExternal from '../components/TeamExternal/TeamExternal'
 import Pricing from '../components/Pricing/Pricing'
 import Footer from '../components/FooterExternal/Footer'
 import CallToAction from '../components/CallToAction/CallToAction'
+import ExternalNav from '../components/ExternalNav'
 
 const HomeExternal = () => {
     return (
