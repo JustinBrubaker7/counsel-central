@@ -7,7 +7,6 @@ const sequelize = require("./config/connection");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
-const apiRoutes = require("./routes/apiRoutes");
 
 const sess = {
   secret: "Super secret secret",
