@@ -6,8 +6,61 @@ const nodemailer = require("nodemailer");
 const transporter = require("../config/nodemailer");
 
 // Routes all defined on /api/admin
-router.post("/", async (req, res) => {
-  let A;
+
+// Creates a new counselor /api/admin/create
+router.post("/create", async (req, res) => {
+  try {
+    await Counselor.create({
+      // Added the center key which needs to be passed through the request, along with the rest of the information
+      centerKey: req.body.centerKey,
+      username: req.body.username,
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    }).then((newUser) => {
+      res.json(newUser);
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// Removes a counselor /api/admin/remove
+router.delete("/remove", async (req, res) => {
+  try {
+    await Counselor.destroy({
+      where: {
+        id: req.body.id,
+      },
+    }).then((newUser) => {
+      res.json(newUser);
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// Updates a couselor /api/admin/update
+router.put("/update", async (req, res) => {
+  try {
+    await Counselor.update(
+      {
+        where: {
+          id: req.body.id,
+        },
+      },
+      {
+        username: req.body.username,
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+      }
+    ).then((newUser) => {
+      res.json(newUser);
+    });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 module.exports = router;
