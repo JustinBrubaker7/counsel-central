@@ -18,8 +18,8 @@ router.post("/create", async (req, res) => {
       email: req.body.email,
       phoneNumber: req.body.phoneNumber,
       location: req.body.location,
-    }).then((newUser) => {
-      res.json(newUser);
+    }).then((data) => {
+      res.json(data);
     });
   } catch (err) {
     console.log(err);
@@ -33,8 +33,8 @@ router.delete("/remove", async (req, res) => {
       where: {
         id: req.body.id,
       },
-    }).then((newUser) => {
-      res.json(newUser);
+    }).then((data) => {
+      res.json(data);
     });
   } catch (err) {
     console.log(err);
@@ -58,8 +58,8 @@ router.put("/update", async (req, res) => {
         phoneNumber: req.body.phoneNumber,
         location: req.body.location,
       }
-    ).then((newUser) => {
-      res.json(newUser);
+    ).then((data) => {
+      res.json(data);
     });
   } catch (err) {
     console.log(err);
