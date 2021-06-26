@@ -20,11 +20,11 @@ const navigation = [
 
 export default function HeaderExternal() {
   return (
-    <Router>
+    <>
       <Popover>
           {({ open }) => (
             <>
-              <div className="max-w-7xl mx-auto px-4 sm:px-6">
+              <div className="mx-auto px-4 sm:px-6 py-6 bg-gray-50">
                 <nav
                   className="relative flex items-center justify-between sm:h-10 md:justify-center"
                   aria-label="Global"
@@ -116,25 +116,12 @@ export default function HeaderExternal() {
                       Log in
                     </a>
                   </div>
-                  {/* <Switch>
-                    <Route exact path="/">
-                      <h1>HOME</h1>
-                    </Route>
-                    <Route exact path="/features">
-                    <h1>FEATURES</h1>
-                     </Route>
-                    <Route exact path="/pricing">
-                     <h1>PRICING</h1>
-                    </Route>
-                    <Route exact path="/contact">
-                     <h1>CONTACT</h1>
-                    </Route>
-                  </Switch> */}
                 </Popover.Panel>
               </Transition>
             </>
           )}
         </Popover>
-        </Router>
+        </>
+        
   )
 }
