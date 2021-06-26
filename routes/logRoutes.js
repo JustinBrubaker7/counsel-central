@@ -5,27 +5,9 @@ const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 const transporter = require("../config/nodemailer");
 
-// Routes all defined on /api
+// Routes all defined on /api/log
 
-// Signup Route
-router.post("/signup", async (req, res) => {
-  try {
-    await Counselor.create({
-      // Added the center key which needs to be passed through the request, along with the rest of the information
-      centerKey: req.body.centerKey,
-      username: req.body.username,
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-    }).then((newUser) => {
-      res.json(newUser);
-    });
-  } catch (err) {
-    console.log(err);
-  }
-});
-
-// Login route
+// Login route /api/log/login
 router.post("/login", async (req, res) => {
   console.log(req.body);
   try {
@@ -59,7 +41,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// Logout route
+// Logout route /api/log/logout
 router.post("/logout", async (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {

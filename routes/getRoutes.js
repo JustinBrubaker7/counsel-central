@@ -5,15 +5,9 @@ const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 const transporter = require("../config/nodemailer");
 
-// ---------- Working On Authentication ----------------
-
-// Routes all defined on /api/auth
+// Routes all defined on /api/date
 router.post("/", async (req, res) => {
-  const theString = JSON.stringify(req.body);
-  const newString = await bcrypt.hash(theString, 7);
-  console.log(newString);
-
-  res.send(newString);
+  let A;
 });
 
 module.exports = router;
