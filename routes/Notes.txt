@@ -1,0 +1,50 @@
+1. Inside of index.js is where I mapped out the router usage ino the different
+   routes. Currently laid out are
+
+   - logRoutes /api/log
+        This is where the login/logout functions occur
+
+   - adminRoutes /api/admin
+        This is where the crud of counselors takes place
+
+   - counselorRoutes /api/counselor
+        This is where the crud of residents takes place
+
+   - getRoutes /api/get
+        This is where all the general get info is, returning all of something
+
+   - calendarRoutes /api/date
+        This will be where the calendar events will be
+
+   - noteRoutes /api/note
+        This is where the CRUD of notes takes place
+
+   - authRoutes /api/auth
+        This is where I am planning on having the authentication take place.
+        Send the token to this route, { isVerified ? Go : No }
+
+2. Things I need to be able to move forward
+
+- Notes model 
+- Comments model
+- Counselor model
+- Resident model
+- Center model
+
+- relational data setup
+
+3. General Notes
+
+- I can always change my creation parameters to match the models so you guys can 
+  determine what you want the foreign keys to be called and so fourth. I can change
+  my code to match.
+
+- Also any sort of naming conventions you guys discuss I can also change to match
+  just let me know.
+
+- I have tested some routes out and they are working in Insomniac on port :3001
+
+- Also let me know if the structural change messed up anything on the react end of 
+  things, the way it was structured before involved using one single long page of
+  javascript with every route existing under a single "/api" route. My change just
+  made more sense to me in the moment.
