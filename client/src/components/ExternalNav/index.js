@@ -34,13 +34,13 @@ export default function HeaderExternal() {
                       <Link to="/">
                         <span className="sr-only">Workflow</span>
                         <img
-                          className="h-8 w-auto sm:h-10"
-                          src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                          className="h-10 w-auto sm:h-10"
+                          src="./logoMain.png"
                           alt=""
                         />
                       </Link>
                       <div className="-mr-2 flex items-center md:hidden">
-                        <Popover.Button className="bg-gray-50 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <Popover.Button className="bg-gray-50 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-honolulu">
                           <span className="sr-only">Open main menu</span>
                           <MenuIcon className="h-6 w-6" aria-hidden="true" />
                         </Popover.Button>
@@ -58,7 +58,7 @@ export default function HeaderExternal() {
                     <span className="inline-flex rounded-md shadow">
                       <a
                         href="/login"
-                        className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
+                        className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-honolulu bg-white hover:bg-gray-50"
                       >
                         Log in
                       </a>
@@ -87,12 +87,12 @@ export default function HeaderExternal() {
                       <div>
                         <img
                           className="h-8 w-auto"
-                          src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                          src="./logoMain.png"
                           alt=""
                         />
                       </div>
                       <div className="-mr-2">
-                        <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-honolulu-dark">
                           <span className="sr-only">Close menu</span>
                           <XIcon className="h-6 w-6" aria-hidden="true" />
                         </Popover.Button>
@@ -110,8 +110,8 @@ export default function HeaderExternal() {
                       ))}
                     </div>
                     <a
-                      href="/"
-                      className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100"
+                      href="/login"
+                      className="block w-full px-5 py-3 text-center font-medium text-honolulu bg-gray-50 hover:bg-gray-100"
                     >
                       Log in
                     </a>
