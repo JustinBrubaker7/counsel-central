@@ -12,8 +12,7 @@ router.post("/create", async (req, res) => {
   try {
     await Counselor.create({
       // Added the center key which needs to be passed through the request, along with the rest of the information
-      centerKey: req.body.centerKey,
-      username: req.body.username,
+      center_id: req.body.centerKey,
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
@@ -50,7 +49,7 @@ router.put("/update", async (req, res) => {
         },
       },
       {
-        username: req.body.username,
+        center_id: req.body.center_id,
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
