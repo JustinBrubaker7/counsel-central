@@ -12,8 +12,8 @@ const transporter = require("../config/nodemailer");
 // // Create a new note /api/note/create
 // router.post("/create", async (req, res) => {
 //   newNote = await Note.create({
-//     counselorID: req.body.counselorID,
-//     residentID: req.body.residentID,
+//     counselor_id: req.body.counselor_id,
+//     resident_id: req.body.resident_id,
 //     body: req.params.body,
 //   });
 // });

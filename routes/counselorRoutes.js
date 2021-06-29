@@ -7,17 +7,15 @@ const transporter = require("../config/nodemailer");
 
 // Routes all defined on /api/admin
 
-// Creates a new Resident /api/counselor/create
+// Creates a new counselor /api/admin/create
 router.post("/create", async (req, res) => {
   try {
-    await Resident.create({
+    await Counselor.create({
       // Added the center key which needs to be passed through the request, along with the rest of the information
-      centerID: req.body.centerID,
-      counselorID: req.body.counselorID,
+      center_id: req.body.centerKey,
       name: req.body.name,
       email: req.body.email,
-      phoneNumber: req.body.phoneNumber,
-      location: req.body.location,
+      password: req.body.password,
     }).then((data) => {
       res.json(data);
     });
@@ -26,10 +24,10 @@ router.post("/create", async (req, res) => {
   }
 });
 
-// Removes a Resident /api/counselor/remove
+// Removes a counselor /api/admin/remove
 router.delete("/remove", async (req, res) => {
   try {
-    await Resident.destroy({
+    await Counselor.destroy({
       where: {
         id: req.body.id,
       },
@@ -41,22 +39,20 @@ router.delete("/remove", async (req, res) => {
   }
 });
 
-// Updates a Resident /api/counselor/update
+// Updates a couselor /api/admin/update
 router.put("/update", async (req, res) => {
   try {
-    await Resident.update(
+    await Counselor.update(
       {
         where: {
           id: req.body.id,
         },
       },
       {
-        centerID: req.body.centerID,
-        counselorID: req.body.counselorID,
+        center_id: req.body.center_id,
         name: req.body.name,
         email: req.body.email,
-        phoneNumber: req.body.phoneNumber,
-        location: req.body.location,
+        password: req.body.password,
       }
     ).then((data) => {
       res.json(data);
