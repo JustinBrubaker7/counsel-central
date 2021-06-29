@@ -14,7 +14,7 @@ import {
   InformationCircleIcon } from '@heroicons/react/outline'
 import { SearchIcon } from '@heroicons/react/solid'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Logo from '../../assets/sample2-removebg-preview.png';
+import Logo from '../../assets/white.png';
 import Dashboard from '../../pages/Dashboard';
 import Caseload from '../../pages/Caseload';
 import Poplog from '../../pages/Poplog';
@@ -139,7 +139,7 @@ export default function AppNav() {
           <div className="flex flex-col h-0 flex-1">
             <div className="flex items-center h-16 flex-shrink-0 px-4 bg-gray-900">
               <img
-                className="-ml-6"
+                className="h-12 m-4"
                 src={Logo}
                 alt="Counsel Central"
               />
