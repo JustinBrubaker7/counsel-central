@@ -11,28 +11,60 @@ const transporter = require("../config/nodemailer");
 router.post("/login", async (req, res) => {
   console.log(req.body);
   try {
-    const userCheck = await Counselor.findOne({
+    let isAdmin;
+
+    const centerCheck = await Center.findOne({
       where: {
         email: req.body.email,
       },
     });
 
-    if (userCheck.length === 0) {
+    if (centerCheck.length === 0) {
+      const userCheck = await Counselor.findOne({
+        where: {
+          email: req.body.email,
+        },
+      });
+
+      if (userCheck.length === 0) {
+        res.status(400).json({ message: "Wrong email or password, try again" });
+        return;
+      }
+
+      const correctPassword = await userCheck.checkPassword(req.body.password);
+
+      if (!correctPassword) {
+        res.status(400).json({ message: "Wrong email or password, try again" });
+        return;
+      }
+
+      isAdmin = false;
+
+      // Make sure these variables line up with the react frontend
+      req.session.save(() => {
+        req.session.user_id = userCheck.id;
+        req.session.logged_in = true;
+        req.session.isAdmin = isAdmin;
+        console.log("Youre logged in");
+        res.json({ user: userCheck, message: "You are logged in!" });
+      });
+    }
+
+    const adminPassword = await userCheck.checkPassword(req.body.password);
+
+    if (!adminPassword) {
       res.status(400).json({ message: "Wrong email or password, try again" });
+      isAdmin = false;
       return;
     }
 
-    const correctPassword = await userCheck.checkPassword(req.body.password);
-
-    if (!correctPassword) {
-      res.status(400).json({ message: "Wrong email or password, try again" });
-      return;
-    }
+    isAdmin = true;
 
     // Make sure these variables line up with the react frontend
     req.session.save(() => {
       req.session.user_id = userCheck.id;
       req.session.logged_in = true;
+      req.session.isAdmin = isAdmin;
       console.log("Youre logged in");
       res.json({ user: userCheck, message: "You are logged in!" });
     });
