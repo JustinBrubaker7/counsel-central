@@ -17,7 +17,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(true)
 
   return (
     <>
@@ -40,7 +40,7 @@ function App() {
       </Route>
       <Route exact path="/contact" >
         <ExternalNav />
-        
+        <h1> COntact </h1>
       </Route>
       <Route exact path="/register" >
         <ExternalNav />
