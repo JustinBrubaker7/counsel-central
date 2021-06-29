@@ -9,6 +9,7 @@ import {
   MenuAlt2Icon,
   UsersIcon,
   XIcon,
+  CogIcon,
   UserGroupIcon,
   InformationCircleIcon } from '@heroicons/react/outline'
 import { SearchIcon } from '@heroicons/react/solid'
@@ -45,7 +46,7 @@ export default function AppNav() {
     { name: 'Caseload', href: '/caseload', icon: UsersIcon, current: false },
     { name: 'Pop-Log', href: '/poplog', icon: UserGroupIcon, current: false },
     { name: 'Calendar', href: '/calendar', icon: CalendarIcon, current: false },
-    { name: 'Settings', href: '/settings', icon: InformationCircleIcon, current: false },
+    { name: 'Settings', href: '/settings', icon: CogIcon, current: false },
   ])
 
 
