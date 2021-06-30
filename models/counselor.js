@@ -1,7 +1,12 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
+const bcrypt = require("bcrypt");
 
-class Counselor extends Model {}
+class Counselor extends Model {
+  checkCounselorPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
+  }
+}
 
 Counselor.init(
   {
@@ -41,7 +46,7 @@ Counselor.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "center",
+    modelName: "counselor",
   }
 );
 
