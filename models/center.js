@@ -85,6 +85,5 @@ Center.init(
 // number of counsellors
 // website
 //
-class Center extends Model {}
 
 module.exports = Center;
