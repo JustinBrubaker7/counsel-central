@@ -6,10 +6,10 @@ import {
   ChartBarIcon,
   FolderIcon,
   HomeIcon,
-  InboxIcon,
   MenuAlt2Icon,
   UsersIcon,
   XIcon,
+  CogIcon,
   UserGroupIcon,
   InformationCircleIcon } from '@heroicons/react/outline'
 import { SearchIcon } from '@heroicons/react/solid'
@@ -20,11 +20,19 @@ import Caseload from '../../pages/Caseload';
 import Poplog from '../../pages/Poplog';
 import Calendar from '../../pages/Calendar';
 import Settings from '../../pages/Settings';
+import { PlusIcon as PlusIconSolid } from '@heroicons/react/solid'
+import AddCouselorForm from '../../pages/AddCouselorForm'
+import AddStudentForm from '../../pages/AddStudentForm';
 
 
 const userNavigation = [
   { name: 'Your Profile', href: '/settings' },
   { name: 'Sign out', href: '/logout' },
+]
+
+const AddDropdown = [
+  { name: 'Add Counselor', href: '/counselor' },
+  { name: 'Add Student', href: '/student' },
 ]
 
 function classNames(...classes) {
@@ -34,11 +42,11 @@ function classNames(...classes) {
 export default function AppNav() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [navigation, setNavigation] = useState([
-    { name: 'Dashboard', href: '/', icon: HomeIcon, current: false },
+    { name: 'Dashboard', href: '/', icon: HomeIcon, current: true },
     { name: 'Caseload', href: '/caseload', icon: UsersIcon, current: false },
     { name: 'Pop-Log', href: '/poplog', icon: UserGroupIcon, current: false },
     { name: 'Calendar', href: '/calendar', icon: CalendarIcon, current: false },
-    { name: 'Settings', href: '/settings', icon: InformationCircleIcon, current: false },
+    { name: 'Settings', href: '/settings', icon: CogIcon, current: false },
   ])
 
 
@@ -150,10 +158,11 @@ export default function AppNav() {
                   <Link
                     key={item.name}
                     to={item.href}
-                    //onClick={() => setNavigation(console.log(...navigation, item.current))}
+                    //onClick={(e) => setNavigation(e.tar)}
+                    //onClick={() => setNavigation(console.log(item))}
                     className={classNames(
                       item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
+                      'group flex items-center px-2 py-2 text-lg font-medium rounded-md tracking-widest'
                     )}
                   >
                     <item.icon
@@ -200,8 +209,57 @@ export default function AppNav() {
                 </div>
               </form>
             </div>
-            <div className="ml-4 flex items-center md:ml-6">
-              <button className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <div className="ml-6 flex items-center md:ml-">
+                            
+              <Menu as="div" className="ml-3 relative">
+                {({ open }) => (
+                  <>
+                    <div>
+                      <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none">
+                        <span className="sr-only">Open add menu</span>
+                        <button
+                          type="button"
+                          className=" mx-4 inline-flex items-center p-2 border border-transparent rounded-full shadow-sm text-white bg-usa hover:bg-usa focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-usa"
+                        >
+                          <PlusIconSolid className="h-5 w-5" aria-hidden="true" />
+                        </button>
+                      </Menu.Button>
+                    </div>
+                    <Transition
+                      show={open}
+                      as={Fragment}
+                      enter="transition ease-out duration-100"
+                      enterFrom="transform opacity-0 scale-95"
+                      enterTo="transform opacity-100 scale-100"
+                      leave="transition ease-in duration-75"
+                      leaveFrom="transform opacity-100 scale-100"
+                      leaveTo="transform opacity-0 scale-95"
+                    >
+                      <Menu.Items
+                        static
+                        className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      >
+                        {AddDropdown.map((item) => (
+                          <Menu.Item key={item.name}>
+                            {({ active }) => (
+                              <Link
+                                to={item.href}
+                                className={classNames(
+                                  active ? 'bg-gray-100' : '',
+                                  'block px-4 py-2 text-sm text-gray-700'
+                                )}
+                              >
+                                {item.name}
+                              </Link>
+                            )}
+                          </Menu.Item>
+                        ))}
+                      </Menu.Items>
+                    </Transition>
+                  </>
+                )}
+              </Menu>
+              <button className="mx-4 bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 <span className="sr-only">View notifications</span>
                 <BellIcon className="h-6 w-6" aria-hidden="true" />
               </button>
@@ -277,6 +335,12 @@ export default function AppNav() {
                 </Route>
                 <Route exact path="/settings">
                   <Settings />
+                </Route>
+                <Route exact path="/counselor">
+                  <AddCouselorForm />
+                </Route>
+                <Route exact path="/student">
+                  <AddStudentForm />
                 </Route>
               </Switch>
               {/* /End replace */}
