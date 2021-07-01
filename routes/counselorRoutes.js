@@ -17,6 +17,7 @@ router.post("/create", async (req, res) => {
       email: req.body.email,
       password: req.body.password,
     }).then((data) => {
+      res.send(data);
       res.json(data);
     });
   } catch (err) {
@@ -32,6 +33,7 @@ router.delete("/remove", async (req, res) => {
         id: req.body.id,
       },
     }).then((data) => {
+      res.send(data);
       res.json(data);
     });
   } catch (err) {
@@ -55,6 +57,7 @@ router.put("/update", async (req, res) => {
         password: req.body.password,
       }
     ).then((data) => {
+      res.send(data);
       res.json(data);
     });
   } catch (err) {

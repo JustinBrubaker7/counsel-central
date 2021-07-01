@@ -47,6 +47,7 @@ router.post("/login", async (req, res) => {
         req.session.isAdmin = isAdmin;
         console.log("Youre logged in");
         res.json({ user: userCheck, message: "You are logged in!" });
+        res.send("Logged In");
       });
     }
 
