@@ -26,14 +26,11 @@ Resident.init(
       allowNull: false,
     },
     DOB: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        isDate: true,
-      },
     },
     phoneNumber: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT(20),
       allowNull: false,
       validate: {
         isNumeric: true,
@@ -120,7 +117,6 @@ Resident.init(
   {
     sequelize,
     freezeTableNAme: true,
-    underscored: true,
     modelName: "resident",
   }
 );
