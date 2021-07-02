@@ -64,7 +64,7 @@ Center.init(
       },
     },
     phone: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT(20),
       allowNull: false,
       validate: {
         isNumeric: true,
@@ -87,7 +87,6 @@ Center.init(
     },
     sequelize,
     freezeTableName: true,
-    underscored: true,
     modelName: "center",
   }
 );

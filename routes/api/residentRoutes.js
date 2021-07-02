@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Center, Counselor, Resident } = require("../models");
+const { Center, Counselor, Resident } = require("../../models");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");

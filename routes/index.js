@@ -1,18 +1,7 @@
 const router = require("express").Router();
-const logRoutes = require("./logRoutes");
-const counselorRoutes = require("./counselorRoutes");
-const calendarRoutes = require("./calendarRoutes");
-const noteRoutes = require("./noteRoutes");
-const authRoutes = require("./authRoutes");
-const residentRoutes = require("./residentRoutes");
-const getRoutes = require("./getRoutes");
+const { Center, Counselor, Resident } = require("../models");
+const apiRoutes = require("./api/index");
 
-router.use("/api/log", logRoutes);
-router.use("/api/counselor", counselorRoutes);
-router.use("/api/resident", residentRoutes);
-router.use("/api/get", getRoutes);
-router.use("/api/date", calendarRoutes);
-router.use("/api/note", noteRoutes);
-router.use("/api/auth", authRoutes);
+router.use("/api", apiRoutes);
 
-module.exports = router;
+module.exports = { router, Center, Counselor, Resident };
