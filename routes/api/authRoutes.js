@@ -16,4 +16,19 @@ router.post("/", async (req, res) => {
   res.send(newString);
 });
 
+// Return all counselors and residents of Conselor /api/get/counselor
+router.get("/counselor", async (req, res) => {
+  getAll = await Counselor.findAll({
+    include: {
+      // Notes,
+      Resident,
+    },
+    raw: true,
+  });
+
+  const Counselors = getAll.map((getInfo) => getInfo({ plain: true }));
+
+  req.send(Counselors);
+});
+
 module.exports = router;
