@@ -1,6 +1,6 @@
 import React from 'react'
 import CaseloadCard from '../components/CaseloadCard/CaseloadCard'
-import Title from '../components/CaseloadCard/Title/Title'
+import Title from '../components/Title/Title'
 
 const Caseload = () => {
     return (
