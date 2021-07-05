@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const routes = require("./routes");
+const routes = require("./routes/index");
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const sequelize = require("./config/connection");
@@ -28,11 +28,11 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// Send every request to the React app
-// Define any API routes before this runs
-app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// // Send every request to the React app
+// // Define any API routes before this runs
+// app.get("*", function (req, res) {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
 
 // Use apiRoutes
 app.use(routes);
