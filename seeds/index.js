@@ -5,13 +5,13 @@ const centerSeed = require('./centerData');
 
 
 const seedAll = async () => {
-    await sequelize.sync({force: true});
+    await sequelize.sync({ force: true });
 
     await counselorSeed();
 
     await residentSeed();
 
-    await centerSeed();
+    // await centerSeed();
 
     process.exit(0);
 };

@@ -223,12 +223,12 @@ export default function AppNav() {
                       <div>
                         <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none">
                           <span className="sr-only">Open add menu</span>
-                          <button
+                          <span
                             type="button"
                             className=" mx-4 inline-flex items-center p-2 border border-transparent rounded-full shadow-sm text-white bg-usa hover:bg-usa focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-usa"
                           >
                             <PlusIconSolid className="h-5 w-5" aria-hidden="true" />
-                          </button>
+                          </span>
                         </Menu.Button>
                       </div>
                       <Transition

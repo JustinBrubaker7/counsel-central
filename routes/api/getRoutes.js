@@ -3,7 +3,8 @@ const { Center, Counselor, Resident } = require("../../models");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
-const transporter = require("../config/nodemailer");
+const transporter = require("../../config/nodemailer");
+const cors = require('cors');
 
 // Routes all defined on /api/get
 router.get("/", async (req, res) => {
@@ -15,12 +16,15 @@ router.get("/", async (req, res) => {
 });
 
 // Return all residents /api/get/resident
-router.get("/resident", async (req, res) => {
-  getAll = await Resident.findAll({});
+router.get("/resident", cors(), async (req, res) => {
+  try {
+    const residentData = await Resident.findAll();
+    res.status(200).json(residentData);
+    console.log(residentData)
+  } catch (err) {
+    res.status(500).json(err);
+  }
 
-  const Residents = getAll.map((getInfo) => getInfo({ plain: true }));
-
-  res.send(Residents);
 });
 
 // Return all counselors and residents of Conselor /api/get/counselor
