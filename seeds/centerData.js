@@ -13,6 +13,7 @@ const centerData = [
     director_name: "Andrew Garfield",
     email: "agarfield@atx_rehab.org",
     phone: 5126654350,
+    password: "IThinkThisIsAPassword",
   },
 
   {
@@ -27,5 +28,10 @@ const centerData = [
     director_name: "Tom Holland",
     email: "tholland@riverside_rehab.org",
     phone: 5126654350,
+    password: "ThisIsAPassword",
   },
 ];
+
+const centerSeed = () => Center.bulkCreate(centerData);
+
+module.exports = centerSeed;
