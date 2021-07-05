@@ -3,7 +3,11 @@ const { Center, Counselor, Resident } = require("../../models");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
+<<<<<<< HEAD
 const transporter = require("../../config/nodemailer");
+=======
+//const transporter = require("../config/nodemailer");
+>>>>>>> 34d3fd69462e316e67a3df4028f88ea9ff24d42f
 
 // ---------- Uncomment When NOTE Model has been Added --------------
 

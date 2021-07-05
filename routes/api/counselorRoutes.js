@@ -3,14 +3,14 @@ const { Center, Counselor, Resident } = require("../../models");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
-const transporter = require("../../config/nodemailer");
+//const transporter = require("../../config/nodemailer");
 
-// Routes all defined on /api/admin
+// Routes all defined on /api/counselor
 
-// Creates a new counselor /api/admin/create
+// Creates a new counselor /api/counselor/create
 router.post("/create", async (req, res) => {
   try {
-    await Counselor.create({
+    const newCounselor = await Counselor.create({
       // Added the center key which needs to be passed through the request, along with the rest of the information
       center_id: req.body.centerKey,
       name: req.body.name,
@@ -25,7 +25,7 @@ router.post("/create", async (req, res) => {
   }
 });
 
-// Removes a counselor /api/admin/remove
+// Removes a counselor /api/counselor/remove
 router.delete("/remove", async (req, res) => {
   try {
     await Counselor.destroy({
@@ -41,7 +41,7 @@ router.delete("/remove", async (req, res) => {
   }
 });
 
-// Updates a couselor /api/admin/update
+// Updates a couselor /api/counselor/update
 router.put("/update", async (req, res) => {
   try {
     await Counselor.update(
