@@ -10,7 +10,7 @@ const nodemailer = require("nodemailer");
 // Creates a new Resident /api/resident/create
 router.post("/create", async (req, res) => {
   try {
-    await new Resident.create({
+    await Resident.create({
       // Added the center key which needs to be passed through the request, along with the rest of the information
       center_id: req.body.centerID,
       counselor_id: req.body.counselorID,
