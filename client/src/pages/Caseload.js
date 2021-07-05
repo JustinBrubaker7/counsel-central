@@ -1,9 +1,12 @@
 import React from 'react'
+import CaseloadCard from '../components/CaseloadCard/CaseloadCard'
+import Title from '../components/Title/Title'
 
 const Caseload = () => {
     return (
         <div>
-            <h1>Caseload</h1>
+            <Title title={"Caseload"} />
+            <CaseloadCard />
         </div>
     )
 }
