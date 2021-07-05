@@ -3,14 +3,19 @@ const Center = require("./center");
 const Resident = require("./resident");
 
 Center.hasMany(Counselor, {
-  foreignKey: "counselor_id,",
+  foreignKey: "center_id,",
 });
-Counselor.belongsTo(Center, {
-  foreignKey: "center_id",
+
+Center.hasMany(Resident, {
+  foreignKey: "center_id,",
 });
 
 Counselor.hasMany(Resident, {
-  foreignKey: "resident_id",
+  foreignKey: "counselor_id",
+});
+
+Counselor.belongsTo(Center, {
+  foreignKey: "center_id",
 });
 
 Resident.belongsTo(Counselor, {

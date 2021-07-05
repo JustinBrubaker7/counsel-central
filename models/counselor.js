@@ -34,6 +34,13 @@ Counselor.init(
         len: [8],
       },
     },
+    center_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "center",
+        key: "id",
+      },
+    },
   },
 
   {
