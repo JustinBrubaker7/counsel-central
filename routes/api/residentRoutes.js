@@ -5,12 +5,12 @@ const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 //const transporter = require("../config/nodemailer");
 
-// Routes all defined on /api/admin
+// Routes all defined on /api/resident
 
-// Creates a new Resident /api/counselor/create
+// Creates a new Resident /api/resident/create
 router.post("/create", async (req, res) => {
   try {
-    await Resident.create({
+    await new Resident.create({
       // Added the center key which needs to be passed through the request, along with the rest of the information
       center_id: req.body.centerID,
       counselor_id: req.body.counselorID,
@@ -46,7 +46,7 @@ router.post("/create", async (req, res) => {
   }
 });
 
-// Removes a Resident /api/counselor/remove
+// Removes a Resident /api/resident/remove
 router.delete("/remove", async (req, res) => {
   try {
     await Resident.destroy({
@@ -61,7 +61,7 @@ router.delete("/remove", async (req, res) => {
   }
 });
 
-// Updates a Resident /api/counselor/update
+// Updates a Resident /api/resident/update
 router.put("/update", async (req, res) => {
   try {
     await Resident.update(
