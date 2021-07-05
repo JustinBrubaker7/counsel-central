@@ -10,7 +10,7 @@ const nodemailer = require("nodemailer");
 // Creates a new counselor /api/counselor/create
 router.post("/create", async (req, res) => {
   try {
-    await new Counselor.create({
+    const newCounselor = await Counselor.create({
       // Added the center key which needs to be passed through the request, along with the rest of the information
       center_id: req.body.centerKey,
       name: req.body.name,
