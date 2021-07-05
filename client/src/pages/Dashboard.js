@@ -1,9 +1,12 @@
 import React from 'react'
+import Title from '../components/Title/Title'
+import Stats from '../components/Stats/Stats'
 
 const Dashboard = () => {
     return (
         <div>
-            <h1>Dashboard</h1>
+            <Title title={"Dashboard"} />
+            <Stats />
         </div>
     )
 }
