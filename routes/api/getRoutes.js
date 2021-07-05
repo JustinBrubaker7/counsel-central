@@ -25,7 +25,10 @@ router.get("/resident", async (req, res) => {
 
 // Return all counselors and residents of Conselor /api/get/counselor
 router.get("/counselor", async (req, res) => {
-  const getAll = await Counselor.findAll({});
+  const getAll = await Counselor.findAll({
+    include: Center,
+    Resident,
+  });
 
   const Counselors = getAll.map((getInfo) => getInfo.get({ plain: true }));
 
@@ -33,18 +36,23 @@ router.get("/counselor", async (req, res) => {
   console.log(getAll);
 });
 
-// Return all centers, counselors, and residents /api/get/center
-router.get("/center", async (req, res) => {
-  getAll = await Center.findAll({
-    include: {
-      Counselor,
-      Resident,
+// Return a specific center data
+router.get("/center/:id", async (req, res) => {
+  getAll = await Center.findAll(
+    {
+      where: {
+        id: req.params.id,
+      },
     },
-  });
+    {
+      include: Counselor,
+    }
+  );
 
   const Centers = getAll.map((getInfo) => getInfo.get({ plain: true }));
 
-  req.send(Centers);
+  res.send(Centers);
+  console.log(getAll);
 });
 
 // // Return all notes /api/get/notes
