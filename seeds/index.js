@@ -1,20 +1,18 @@
-const sequelize = require('../config/connection');
-const counselorSeed = require('./counselorData');
-const residentSeed = require('./residentData');
-const centerSeed = require('./centerData');
-
+const sequelize = require("../config/connection");
+const counselorSeed = require("./counselorData");
+const residentSeed = require("./residentData");
+const centerSeed = require("./centerData");
 
 const seedAll = async () => {
-    await sequelize.sync({force: true});
+  await sequelize.sync({ force: true });
 
-    await counselorSeed();
+  await centerSeed();
 
-    await residentSeed();
+  await counselorSeed();
 
-    await centerSeed();
+  await residentSeed();
 
-    process.exit(0);
+  process.exit(0);
 };
 
 seedAll();
-

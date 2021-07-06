@@ -112,6 +112,20 @@ Resident.init(
       type: DataTypes.BOOLEAN,
       allowNull: true,
     },
+    counselor_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "counselor",
+        key: "id",
+      },
+    },
+    center_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "center",
+        key: "id",
+      },
+    },
   },
 
   {

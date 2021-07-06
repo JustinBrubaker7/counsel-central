@@ -4,9 +4,10 @@ require("dotenv").config();
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 //const transporter = require("../config/nodemailer");
+const cors = require("cors");
 
 // Routes all defined on /api/get
-router.get("/", async (req, res) => {
+router.get("/", cors(), async (req, res) => {
   const theString = JSON.stringify(req.body);
   const newString = await bcrypt.hash(theString, 7);
   console.log(newString);
@@ -15,17 +16,66 @@ router.get("/", async (req, res) => {
 });
 
 // Return all residents /api/get/resident
-router.get("/resident", async (req, res) => {
-  getAll = await Resident.findAll({});
+router.get("/resident", cors(), async (req, res) => {
+  const getAll = await Resident.findAll({
+    include: [Counselor, Center],
+  });
 
   const Residents = getAll.map((getInfo) => getInfo.get({ plain: true }));
 
   res.send(Residents);
+  console.log(getAll);
+});
+
+// Return a specific resident data
+router.get("/resident/:id", async (req, res) => {
+  getAll = await Resident.findAll({
+    where: {
+      id: req.params.id,
+    },
+    include: [Counselor, Center],
+  });
+
+  const Residents = getAll.map((getInfo) => getInfo.get({ plain: true }));
+
+  res.send(Residents);
+  console.log(getAll);
+});
+
+// Return a specific residents by counselor /api/get/counselor-residents/(counselor ID)
+router.get("/counselor-residents/:id", async (req, res) => {
+  getAll = await Resident.findAll({
+    where: {
+      counselor_id: req.params.id,
+    },
+  });
+
+  const Residents = getAll.map((getInfo) => getInfo.get({ plain: true }));
+
+  res.send(Residents);
+  console.log(getAll);
+});
+
+// Return a specific residents by center /api/get/center-residents/(center ID)
+router.get("/center-residents/:id", async (req, res) => {
+  getAll = await Resident.findAll({
+    where: {
+      center_id: req.params.id,
+    },
+    include: [Counselor],
+  });
+
+  const Residents = getAll.map((getInfo) => getInfo.get({ plain: true }));
+
+  res.send(Residents);
+  console.log(getAll);
 });
 
 // Return all counselors and residents of Conselor /api/get/counselor
 router.get("/counselor", async (req, res) => {
-  const getAll = await Counselor.findAll({});
+  const getAll = await Counselor.findAll({
+    include: [Center, Resident],
+  });
 
   const Counselors = getAll.map((getInfo) => getInfo.get({ plain: true }));
 
@@ -33,18 +83,48 @@ router.get("/counselor", async (req, res) => {
   console.log(getAll);
 });
 
-// Return all centers, counselors, and residents /api/get/center
-router.get("/center", async (req, res) => {
+// Return a specific center data api/get/counselor/(counselor ID)
+router.get("/counselor/:id", async (req, res) => {
+  getAll = await Counselor.findAll({
+    where: {
+      id: req.params.id,
+    },
+    include: [Center, Resident],
+  });
+
+  const Centers = getAll.map((getInfo) => getInfo.get({ plain: true }));
+
+  res.send(Centers);
+  console.log(getAll);
+});
+
+// Return a specific counselors by center /api/get/center-counselors/(center ID)
+router.get("/center-counselors/:id", async (req, res) => {
+  getAll = await Counselor.findAll({
+    where: {
+      center_id: req.params.id,
+    },
+    include: [Resident],
+  });
+
+  const Counselors = getAll.map((getInfo) => getInfo.get({ plain: true }));
+
+  res.send(Counselors);
+  console.log(getAll);
+});
+
+// Return a specific center data api/get/center/(center ID)
+router.get("/center/:id", async (req, res) => {
   getAll = await Center.findAll({
-    include: {
-      Counselor,
-      Resident,
+    where: {
+      id: req.params.id,
     },
   });
 
   const Centers = getAll.map((getInfo) => getInfo.get({ plain: true }));
 
-  req.send(Centers);
+  res.send(Centers);
+  console.log(getAll);
 });
 
 // // Return all notes /api/get/notes
