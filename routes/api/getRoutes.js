@@ -27,7 +27,7 @@ router.get("/resident", cors(), async (req, res) => {
   console.log(getAll);
 });
 
-// Return a specific resident data
+// Return a specific resident data /api/get/resident/(resident ID)
 router.get("/resident/:id", async (req, res) => {
   getAll = await Resident.findAll({
     where: {
