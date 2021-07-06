@@ -2,8 +2,6 @@ const router = require("express").Router();
 const { Center, Counselor, Resident } = require("../../models");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
-const nodemailer = require("nodemailer");
-const transporter = require("../config/nodemailer");
 
 // ---------- Working On Authentication ----------------
 

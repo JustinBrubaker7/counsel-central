@@ -15,6 +15,14 @@ Counselor.hasMany(Resident, {
   foreignKey: "counselor_id",
 });
 
+Counselor.hasMany(Note, {
+  foreignKey: "counselor_id",
+});
+
+Resident.hasMany(Note, {
+  foreignKey: "resident_id",
+});
+
 Note.belongsTo(Counselor, {
   foreignKey: "counselor_id",
 });
