@@ -48,10 +48,12 @@ export default function AppNav() {
   ])
 
 
-  // const handleMenuClass = (event) => {
-  //   const menuItem = event.taget.value
-  //   setNavigation({ })
-  // }
+  function handleMenuClass(name, e){
+      setNavigation(
+        navigation.map(item => name === item.name ? {...item, current:true} : {...item, current:false}
+        ))
+      
+    }
 
 
   return (
@@ -116,9 +118,9 @@ export default function AppNav() {
                 <div className="mt-5 flex-1 h-0 overflow-y-auto">
                   <nav className="px-2 space-y-1">
                     {navigation.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
-                        href={item.href}
+                        to={item.href}
                         className={classNames(
                           item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                           'group flex items-center px-2 py-2 text-base font-medium rounded-md'
@@ -132,7 +134,7 @@ export default function AppNav() {
                           aria-hidden="true"
                         />
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </nav>
                 </div>
@@ -159,11 +161,9 @@ export default function AppNav() {
               <div className="flex-1 flex flex-col overflow-y-auto">
                 <nav className="flex-1 px-2 py-4 bg-gray-800 space-y-1">
                   {navigation.map((item) => (
+                    <div key={item.name} onClick={() => handleMenuClass(item.name)}>
                     <Link
-
-                      key={item.name}
                       to={item.href}
-
                       //onClick={() => setNavigation({ ...navigation, current: true })}
                       className={classNames(
                         item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
@@ -180,6 +180,7 @@ export default function AppNav() {
                       />
                       {item.name}
                     </Link>
+                    </div>
                   ))}
                 </nav>
               </div>
@@ -223,12 +224,12 @@ export default function AppNav() {
                       <div>
                         <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none">
                           <span className="sr-only">Open add menu</span>
-                          <button
+                          <span
                             type="button"
                             className=" mx-4 inline-flex items-center p-2 border border-transparent rounded-full shadow-sm text-white bg-usa hover:bg-usa focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-usa"
                           >
                             <PlusIconSolid className="h-5 w-5" aria-hidden="true" />
-                          </button>
+                          </span>
                         </Menu.Button>
                       </div>
                       <Transition
