@@ -1,9 +1,10 @@
 import React from 'react'
+import Title from '../components/Title/Title'
 
 const Calendar = () => {
     return (
         <div>
-            <h1>Calendar</h1>
+            <Title title={"Calendar"} />
         </div>
     )
 }

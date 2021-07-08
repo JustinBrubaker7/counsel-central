@@ -1,24 +1,21 @@
 const router = require("express").Router();
-const { Center, Counselor, Resident } = require("../models");
+const { Center, Counselor, Resident } = require("../../models");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
-const nodemailer = require("nodemailer");
-const transporter = require("../config/nodemailer");
 
-// Routes all defined on /api/admin
+// Routes all defined on /api/counselor
 
-// Creates a new Resident /api/counselor/create
+// Creates a new counselor /api/counselor/create
 router.post("/create", async (req, res) => {
   try {
-    await Resident.create({
+    const newCounselor = await Counselor.create({
       // Added the center key which needs to be passed through the request, along with the rest of the information
-      centerID: req.body.centerID,
-      counselorID: req.body.counselorID,
+      center_id: req.body.centerKey,
       name: req.body.name,
       email: req.body.email,
-      phoneNumber: req.body.phoneNumber,
-      location: req.body.location,
+      password: req.body.password,
     }).then((data) => {
+      res.send(data);
       res.json(data);
     });
   } catch (err) {
@@ -26,14 +23,15 @@ router.post("/create", async (req, res) => {
   }
 });
 
-// Removes a Resident /api/counselor/remove
+// Removes a counselor /api/counselor/remove
 router.delete("/remove", async (req, res) => {
   try {
-    await Resident.destroy({
+    await Counselor.destroy({
       where: {
         id: req.body.id,
       },
     }).then((data) => {
+      res.send(data);
       res.json(data);
     });
   } catch (err) {
@@ -41,24 +39,23 @@ router.delete("/remove", async (req, res) => {
   }
 });
 
-// Updates a Resident /api/counselor/update
+// Updates a couselor /api/counselor/update
 router.put("/update", async (req, res) => {
   try {
-    await Resident.update(
+    await Counselor.update(
       {
         where: {
           id: req.body.id,
         },
       },
       {
-        centerID: req.body.centerID,
-        counselorID: req.body.counselorID,
+        center_id: req.body.center_id,
         name: req.body.name,
         email: req.body.email,
-        phoneNumber: req.body.phoneNumber,
-        location: req.body.location,
+        password: req.body.password,
       }
     ).then((data) => {
+      res.send(data);
       res.json(data);
     });
   } catch (err) {
