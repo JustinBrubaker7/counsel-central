@@ -28,4 +28,9 @@ const centerData = [
         email: 'tholland@riverside_rehab.org',
         phone: 5126654350,
     },
-]
+
+];
+
+const seedCenter = () => Center.bulkCreate(centerData);
+
+module.exports = seedCenter;
