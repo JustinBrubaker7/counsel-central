@@ -3,7 +3,7 @@ import './App.css';
 import './index.css';
 import AppNav from './components/AppNav'
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import ExternalRoute from './components/ExternalRoute/ExternalRoute';
 
 
@@ -15,12 +15,12 @@ function App() {
 
   return (
     <>
-    <Router>
+      <Router>
 
-      {!loggedIn ? <ExternalRoute></ExternalRoute> : <AppNav />}
+        {!loggedIn ? <ExternalRoute></ExternalRoute> : <AppNav />}
 
-    </Router>
-    </>  
+      </Router>
+    </>
   );
 }
 
