@@ -2,13 +2,7 @@ const router = require("express").Router();
 const { Center, Counselor, Resident, Note } = require("../../models");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
-<<<<<<< HEAD
-const nodemailer = require("nodemailer");
-const transporter = require("../../config/nodemailer");
-const cors = require('cors');
-=======
 const cors = require("cors");
->>>>>>> cf6d728df6f40967540014f054a09692dbc87620
 
 // Routes all defined on /api/get
 router.get("/", cors(), async (req, res) => {
@@ -21,16 +15,6 @@ router.get("/", cors(), async (req, res) => {
 
 // Return all residents /api/get/resident
 router.get("/resident", cors(), async (req, res) => {
-<<<<<<< HEAD
-  try {
-    const residentData = await Resident.findAll();
-    res.status(200).json(residentData);
-    console.log(residentData)
-  } catch (err) {
-    res.status(500).json(err);
-  }
-
-=======
   const getAll = await Resident.findAll({
     include: [Counselor, Center],
   });
@@ -83,7 +67,6 @@ router.get("/center-residents/:id", async (req, res) => {
 
   res.send(Residents);
   console.log(getAll);
->>>>>>> cf6d728df6f40967540014f054a09692dbc87620
 });
 
 // Return all counselors and residents of Conselor /api/get/counselor

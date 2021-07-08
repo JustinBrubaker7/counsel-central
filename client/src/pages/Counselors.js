@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import Title from '../components/Title/Title'
 import CounselorCard from '../components/CounselorCard/CounselorCard'
+import API from '../utils/API'
 
 
 const Counselors = () => {
 
-    // const [counselors, setResidents] = useState([])
+    const [counselors, setCounselors] = useState([])
 
-    // useEffect(() => {
-    //     fetchCasloadHandler()
-    //     console.log('loading/..')
-    // }, [])
+    useEffect(() => {
+        fetchCounselorsHandler(1)
+    }, [])
 
-    // async function fetchCasloadHandler() {
-    //     const response = await fetch('http://localhost:3001/api/get/counselor');
-    //     const data = await response.json()
-
-    //     console.log(data)
-    //     setResidents(data)
-    // }
+    async function fetchCounselorsHandler(id) {
+        const getData = await API.getCounselors(id)
+        const data = getData.data
+        setCounselors(data)
+    }
 
     return (
         <div>
             <Title title={"Counselors"} />
-            <CounselorCard />
+            <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                {counselors.map((person) => (
+                    <CounselorCard key={person.email} person={person} />
+                ))}
+            </ul>
         </div>
     )
 }

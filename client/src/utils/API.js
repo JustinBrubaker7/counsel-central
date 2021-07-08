@@ -3,41 +3,48 @@ import axios from "axios";
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   // Gets all posts
-  getUser: function() {
+  getUser: function () {
     return axios.get("https://randomuser.me/api/");
   },
 
-  getUsers: function(){
+  getUsers: function () {
     return axios.get('https://randomuser.me/api/?results=10')
   },
 
-  getPoplog: function(){
-    return axios.get('https://counselcentral.org/api/get/resident')
-  },
-  
-  getCaseload: function(){
-    return axios.get('https://counselcentral.org/api/caseload')
+  getPoplog: function () {
+    return axios.get('http://localhost:3001/api/get/resident')
   },
 
-  getAllCounselors: function(){
-    return axios.get('https://counselcentral.org/api/get/counselor')
-
+  //gets all residents that belong to the couselor | pass in the counselor ID
+  getResidents: function (id) {
+    return axios.get(`http://localhost:3001/api/get/counselor-residents/${id}`)
   },
 
-  addCounselor: function(){
-    return axios.get('https://counselcentral.org/api/admin/create')
+  //getss all counselors at a given center by ID
+  getCounselors: function (id) {
+    return axios.get(`http://localhost:3001/api/get/center-counselors/${id}`)
   },
 
-  removeCounselor: function(){
-    return axios.get('https://counselcentral.org/api/admin/remove')
+  getCaseload: function () {
+    return axios.get('/api/caseload')
   },
 
-  addResident: function(){
-    return axios.get('https://counselcentral.org/api/counselor/create')
+
+
+  addCounselor: function () {
+    return axios.get('/api/admin/create')
   },
 
-  removeResident: function(){
-    return axios.get('https://counselcentral.org/api/counselor/remove')
+  removeCounselor: function () {
+    return axios.get('/api/admin/remove')
+  },
+
+  addResident: function () {
+    return axios.get('/api/counselor/create')
+  },
+
+  removeResident: function () {
+    return axios.get('/api/counselor/remove')
   },
   //addNote: function(){
   //  return axios.get(notes from counsellor route)

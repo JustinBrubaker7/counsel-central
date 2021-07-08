@@ -43,7 +43,7 @@ function classNames(...classes) {
 export default function AppNav() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [navigation, setNavigation] = useState([
-    { name: 'Dashboard', href: '/', icon: HomeIcon, current: true },
+    { name: 'Dashboard', href: '/', icon: HomeIcon, current: false },
     { name: 'Caseload', href: '/caseload', icon: UserCircleIcon, current: false },
     { name: 'Pop-Log', href: '/poplog', icon: UserGroupIcon, current: false },
     { name: 'Counselors', href: '/counselors', icon: UsersIcon, current: false },
@@ -52,12 +52,12 @@ export default function AppNav() {
   ])
 
 
-  function handleMenuClass(name, e){
-      setNavigation(
-        navigation.map(item => name === item.name ? {...item, current:true} : {...item, current:false}
-        ))
-      
-    }
+  function handleMenuClass(name, e) {
+    setNavigation(
+      navigation.map(item => name === item.name ? { ...item, current: true } : { ...item, current: false }
+      ))
+
+  }
 
 
   return (
@@ -166,24 +166,24 @@ export default function AppNav() {
                 <nav className="flex-1 px-2 py-4 bg-gray-800 space-y-1">
                   {navigation.map((item) => (
                     <div key={item.name} onClick={() => handleMenuClass(item.name)}>
-                    <Link
-                      to={item.href}
-                      //onClick={() => setNavigation({ ...navigation, current: true })}
-                      className={classNames(
-                        item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                        'group flex items-center px-2 py-2 text-lg font-medium rounded-md tracking-widest'
-                      )}
-                    >
-
-                      <item.icon
+                      <Link
+                        to={item.href}
+                        //onClick={() => setNavigation({ ...navigation, current: true })}
                         className={classNames(
-                          item.current ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
-                          'mr-3 flex-shrink-0 h-6 w-6'
+                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                          'group flex items-center px-2 py-2 text-lg font-medium rounded-md tracking-widest'
                         )}
-                        aria-hidden="true"
-                      />
-                      {item.name}
-                    </Link>
+                      >
+
+                        <item.icon
+                          className={classNames(
+                            item.current ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
+                            'mr-3 flex-shrink-0 h-6 w-6'
+                          )}
+                          aria-hidden="true"
+                        />
+                        {item.name}
+                      </Link>
                     </div>
                   ))}
                 </nav>
