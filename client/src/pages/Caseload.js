@@ -23,8 +23,6 @@ const Caseload = () => {
     return (
         <div>
             <Title title={"Caseload"} />
-
-
             <CaseloadCard residents={residents} />
 
         </div>

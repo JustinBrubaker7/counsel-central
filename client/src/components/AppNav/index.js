@@ -6,8 +6,10 @@ import {
   HomeIcon,
   MenuAlt2Icon,
   UsersIcon,
+  UserCircleIcon,
   XIcon,
   CogIcon,
+  HeartIcon,
   UserGroupIcon,
 } from '@heroicons/react/outline'
 import { SearchIcon } from '@heroicons/react/solid'
@@ -21,6 +23,7 @@ import Settings from '../../pages/Settings';
 import { PlusIcon as PlusIconSolid } from '@heroicons/react/solid'
 import AddCouselorForm from '../../pages/AddCouselorForm'
 import AddResidentForm from '../../pages/AddResidentForm';
+import Counselor from '../../pages/Counselors';
 
 
 const userNavigation = [
@@ -41,8 +44,9 @@ export default function AppNav() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [navigation, setNavigation] = useState([
     { name: 'Dashboard', href: '/', icon: HomeIcon, current: true },
-    { name: 'Caseload', href: '/caseload', icon: UsersIcon, current: false },
+    { name: 'Caseload', href: '/caseload', icon: UserCircleIcon, current: false },
     { name: 'Pop-Log', href: '/poplog', icon: UserGroupIcon, current: false },
+    { name: 'Counselors', href: '/counselors', icon: UsersIcon, current: false },
     { name: 'Calendar', href: '/calendar', icon: CalendarIcon, current: false },
     { name: 'Settings', href: '/settings', icon: CogIcon, current: false },
   ])
@@ -108,7 +112,7 @@ export default function AppNav() {
                 </Transition.Child>
                 <div className="flex-shrink-0 flex items-center px-4">
                   <img
-                    className="w-auto h-80 -my-32 -ml-6"
+                    className="w-auto h-12"
                     src={Logo}
                     alt="Counsel Central"
                   />
@@ -335,6 +339,9 @@ export default function AppNav() {
                   </Route>
                   <Route exact path="/Poplog">
                     <Poplog />
+                  </Route>
+                  <Route exact path="/counselors">
+                    <Counselor />
                   </Route>
                   <Route exact path="/calendar">
                     <Calendar />

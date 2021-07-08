@@ -25,12 +25,6 @@ router.get("/resident", cors(), async (req, res) => {
     res.status(500).json(err);
   }
 
-<<<<<<< HEAD
-=======
-  const Residents = getAll.map((getInfo) => getInfo.get({ plain: true }));
-
-  res.send(Residents);
->>>>>>> 34d3fd69462e316e67a3df4028f88ea9ff24d42f
 });
 
 // Return all counselors and residents of Conselor /api/get/counselor
