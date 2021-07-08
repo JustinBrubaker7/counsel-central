@@ -130,7 +130,7 @@ Resident.init(
 
   {
     sequelize,
-    freezeTableNAme: true,
+    freezeTableName: true,
     modelName: "resident",
   }
 );

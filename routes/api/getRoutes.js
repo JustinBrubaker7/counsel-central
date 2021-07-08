@@ -1,9 +1,7 @@
 const router = require("express").Router();
-const { Center, Counselor, Resident } = require("../../models");
+const { Center, Counselor, Resident, Note } = require("../../models");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
-const nodemailer = require("nodemailer");
-//const transporter = require("../config/nodemailer");
 const cors = require("cors");
 
 // Routes all defined on /api/get
@@ -27,7 +25,7 @@ router.get("/resident", cors(), async (req, res) => {
   console.log(getAll);
 });
 
-// Return a specific resident data
+// Return a specific resident data /api/get/resident/(resident ID)
 router.get("/resident/:id", async (req, res) => {
   getAll = await Resident.findAll({
     where: {
@@ -127,13 +125,43 @@ router.get("/center/:id", async (req, res) => {
   console.log(getAll);
 });
 
-// // Return all notes /api/get/notes
-// router.get("/notes", async (req, res) => {
-//   getAll = await Note.findAll({
-//     raw: true,
-//   });
+// Return all notes from a specific counselor /api/get/counselor-notes/(counselor ID)
+router.get("/counselor-notes/:id", async (req, res) => {
+  getAll = await Counselor.findAll({
+    where: {
+      center_id: req.params.id,
+    },
+    include: [Note],
+  });
 
-//   res.send(getAll);
-// });
+  const Notes = getAll.map((getInfo) => getInfo.get({ plain: true }));
+
+  res.send(Notes);
+  console.log(getAll);
+});
+
+// Return all notes for a specific resident /api/get/resident-notes/(resident ID)
+router.get("/resident-notes/:id", async (req, res) => {
+  getAll = await Note.findAll({
+    where: {
+      center_id: req.params.id,
+    },
+    include: [Resident],
+  });
+
+  const Notes = getAll.map((getInfo) => getInfo.get({ plain: true }));
+
+  res.send(Notes);
+  console.log(getAll);
+});
+
+// Return all notes /api/get/notes
+router.get("/notes", async (req, res) => {
+  getAll = await Note.findAll({
+    raw: true,
+  });
+
+  res.send(getAll);
+});
 
 module.exports = router;
