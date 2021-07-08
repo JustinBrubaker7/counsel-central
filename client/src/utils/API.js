@@ -16,14 +16,18 @@ export default {
   },
 
   //gets all residents that belong to the couselor | pass in the counselor ID
-  getResidents: function (id) {
+  getResident: function (id) {
     return axios.get(`http://localhost:3001/api/get/counselor-residents/${id}`)
+  },
+  getResidents: function (id) {
+    return axios.get(`http://localhost:3001/api/get/center-residents/${id}`)
   },
 
   //getss all counselors at a given center by ID
   getCounselors: function (id) {
     return axios.get(`http://localhost:3001/api/get/center-counselors/${id}`)
   },
+
 
   getCaseload: function () {
     return axios.get('/api/caseload')
