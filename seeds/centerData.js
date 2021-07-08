@@ -16,40 +16,21 @@ const centerData = [
     password: "IThinkThisIsAPassword",
   },
 
-    {
-        name: 'Riverside Rehabilitation',
-        address: '3000 Big Springs Roada',
-        city: 'Riverside',
-        state: 'Califorina',
-        zipCode: '92510',
-        residentCount: 5,
-        bedCount: 5,
-        counselorCount: 5,
-        director_name: 'Tom Holland',
-        email: 'tholland@riverside_rehab.org',
-        phone: 5126654350,
-    },
-
-];
-
-const seedCenter = () => Center.bulkCreate(centerData);
-
-module.exports = seedCenter;
-
   {
-    name: "Riverside Rehabilitation",
-    address: "3000 Big Springs Roada",
-    city: "Riverside",
-    state: "Califorina",
-    zipCode: "92510",
+    name: 'Riverside Rehabilitation',
+    address: '3000 Big Springs Roada',
+    city: 'Riverside',
+    state: 'Califorina',
+    zipCode: '92510',
     residentCount: 5,
     bedCount: 5,
     counselorCount: 5,
-    director_name: "Tom Holland",
-    email: "tholland@riverside_rehab.org",
+    director_name: 'Tom Holland',
+    email: 'tholland@riverside_rehab.org',
     phone: 5126654350,
-    password: "ThisIsAPassword",
+    password: "passwordQ1",
   },
+
 ];
 
 const centerSeed = () => Center.bulkCreate(centerData);
