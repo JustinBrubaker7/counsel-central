@@ -4,18 +4,19 @@ const routes = require("./routes/index");
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const sequelize = require("./config/connection");
-const cors = require('cors');
-
-
+const cors = require("cors");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
 const sess = {
+  key: "userId",
   secret: "Super secret secret",
-  cookie: {},
+  cookie: {
+    expires: 60 * 60 * 24,
+  },
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   store: new SequelizeStore({
     db: sequelize,
   }),
@@ -25,7 +26,7 @@ const sess = {
 app.use(session(sess));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
