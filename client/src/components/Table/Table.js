@@ -1,4 +1,7 @@
-/* This example requires Tailwind CSS v2.0+ */
+import React, { useState, useEffect } from 'react';
+import API from '../../utils/API'
+import Moment from 'moment'
+
 const people = [
     { name: 'Jane Cooper', age: '21', counselor: 'Mark Fisher', length: '7 Months' },
     { name: 'Cody Fisher', age: '45', counselor: 'Jannet Golzika', length: '12 Days' },
@@ -18,7 +21,23 @@ const people = [
     // More people...
 ]
 
+
 export default function Table() {
+
+    const [residents, setResidents] = useState([])
+
+    useEffect(() => {
+        fetchResidentHandler(1)
+    }, [])
+
+
+    async function fetchResidentHandler(id) {
+        const getData = await API.getResidents(id)
+        const data = await getData.data
+        setResidents(data)
+    }
+
+
     return (
         <div className="flex flex-col">
             <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -32,6 +51,12 @@ export default function Table() {
                                         className="px-4 py-3 text-left text-sm font-medium text-white uppercase tracking-wider"
                                     >
                                         Name
+                                    </th>
+                                    <th
+                                        scope="col"
+                                        className="px-4 py-3 text-left text-sm font-medium text-white uppercase tracking-wider"
+                                    >
+                                        Age
                                     </th>
                                     <th
                                         scope="col"
@@ -57,12 +82,14 @@ export default function Table() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {people.map((person, personIdx) => (
-                                    <tr key={person.email} className={personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-100'}>
-                                        <td className="px-4 py-4 whitespace-nowrap text-md font-medium text-gray-900">{person.name}</td>
-                                        <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{person.age}</td>
-                                        <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{person.counselor}</td>
-                                        <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{person.length}</td>
+                                {residents.map((resident) => (
+                                    <tr key={resident.email} className='bg-white'>
+
+                                        <td className="px-4 py-4 whitespace-nowrap text-md font-medium text-gray-900">{resident.resident_firstName + " " + resident.resident_lastName}</td>
+                                        <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{resident.age}</td>
+                                        <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{resident.age}</td>
+                                        <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{resident.counselor.name}</td>
+                                        <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{Moment(resident.createdAt, "YYYYMMDD").fromNow()}</td>
                                         <td className="px-4 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <a href="#" className="text-prussian hover:text-prussian">
                                                 Add Comment
@@ -75,6 +102,6 @@ export default function Table() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

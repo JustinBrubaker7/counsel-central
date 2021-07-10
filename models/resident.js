@@ -2,7 +2,7 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const bcrypt = require("bcrypt");
 
-class Resident extends Model {}
+class Resident extends Model { }
 
 Resident.init(
   {
