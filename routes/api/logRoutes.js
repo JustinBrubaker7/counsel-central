@@ -18,19 +18,25 @@ router.post("/login", async (req, res) => {
       },
     });
 
-    if (centerCheck.length === 0) {
+    console.log(centerCheck);
+
+    if (centerCheck === null) {
       const userCheck = await Counselor.findOne({
         where: {
           email: req.body.email,
         },
       });
 
-      if (userCheck.length === 0) {
+      console.log(userCheck);
+
+      if (userCheck === null) {
         res.status(400).json({ message: "Wrong email or password, try again" });
         return;
       }
 
-      const correctPassword = await userCheck.checkPassword(req.body.password);
+      const correctPassword = await userCheck.checkCounselorPassword(
+        req.body.password
+      );
 
       if (!correctPassword) {
         res.status(400).json({ message: "Wrong email or password, try again" });
@@ -62,9 +68,11 @@ router.post("/login", async (req, res) => {
 
     // Make sure these variables line up with the react frontend
     req.session.save(() => {
-      req.session.user_id = userCheck.id;
-      req.session.logged_in = true;
-      req.session.isAdmin = isAdmin;
+      req.session.user = {
+        id: userCheck.id,
+        logged_in: true,
+        isAdmin: isAdmin,
+      };
       console.log("Youre logged in");
       res.json({ user: userCheck, message: "You are logged in!" });
     });
@@ -72,6 +80,8 @@ router.post("/login", async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+router.get("/login", async (req, res) => {});
 
 // Logout route /api/log/logout
 router.post("/logout", async (req, res) => {

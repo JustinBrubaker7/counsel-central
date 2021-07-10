@@ -11,26 +11,25 @@ const centerData = [
     bedCount: 600,
     counselorCount: 25,
     director_name: "Andrew Garfield",
-    email: "agarfield@atx_rehab.org",
+    email: "agarfield@example.com",
     phone: 5126654350,
     password: "IThinkThisIsAPassword",
   },
 
   {
-    name: 'Riverside Rehabilitation',
-    address: '3000 Big Springs Roada',
-    city: 'Riverside',
-    state: 'Califorina',
-    zipCode: '92510',
+    name: "Riverside Rehabilitation",
+    address: "3000 Big Springs Roada",
+    city: "Riverside",
+    state: "Califorina",
+    zipCode: "92510",
     residentCount: 5,
     bedCount: 5,
     counselorCount: 5,
-    director_name: 'Tom Holland',
-    email: 'tholland@riverside_rehab.org',
+    director_name: "Tom Holland",
+    email: "tholland@example.com",
     phone: 5126654350,
     password: "passwordQ1",
   },
-
 ];
 
 const centerSeed = () => Center.bulkCreate(centerData);
