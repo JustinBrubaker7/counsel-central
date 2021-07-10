@@ -74,15 +74,38 @@ router.post("/login", async (req, res) => {
 
     res.send(user_token);
 
-    // const verify = jwt.verify(user_token, "bob");
+    const verify = jwt.verify(user_token, "bob");
 
-    // console.log(verify);
+    console.log(verify);
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.get("/login", async (req, res) => {});
+router.get("/login", async (req, res) => {
+  try {
+    const verify = jwt.verify(req.body, "bob");
+
+    if (verify) {
+      res.send({ loggedIn: true, message: "You are logged in", verify });
+    }
+  } catch (err) {
+    res.send({ loggedIn: false, message: "Error with logging in" });
+  }
+});
+
+// Check to see if the token sent is correct /api/log/checktoken
+router.post("/checktoken", async (req, res) => {
+  try {
+    const verify = jwt.verify(req.body.token, "bob");
+
+    if (verify) {
+      res.send({ verify });
+    }
+  } catch (err) {
+    res.send({ loggedIn: false, message: "Error with logging in" });
+  }
+});
 
 // Create counselors on /api/log/signup
 router.post("/signup", async (req, res) => {
@@ -101,11 +124,39 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-// Create counselors on /api/log/signup
+// Create counselors on /api/log/newuser
 router.post("/newuser", async (req, res) => {
   try {
-    console.log(newUser);
-    res.send("Comgramtulatins you signed up");
+    let email = req.body.email;
+    let center_id = req.body.center_id;
+    let name = req.body.name;
+
+    const payload = {
+      email: email,
+      center_id: center_id,
+      name: name,
+    };
+
+    const token = jwt.sign(payload, "bob", {
+      expiresIn: 86400,
+      algorithm: "HS256",
+    });
+
+    var mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: "Sign Up For Counsel Central",
+      text: `Follow this link to signup at Counsel Central: http://localhost:3000/register/token=${token}`,
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+      }
+    });
+    res.send("Comgramtulatins you got an email");
   } catch (err) {
     console.log(err);
   }
