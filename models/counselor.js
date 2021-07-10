@@ -26,6 +26,7 @@ Counselor.init(
       validate: {
         isEmail: true,
       },
+      unique: true,
     },
     password: {
       type: DataTypes.STRING,
@@ -47,6 +48,7 @@ Counselor.init(
     hooks: {
       beforeCreate: async (newUserData) => {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        console.log("Hook is working");
         return newUserData;
       },
     },
