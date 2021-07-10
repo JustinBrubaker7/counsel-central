@@ -1,8 +1,12 @@
 import React, { useRef, useContext } from "react"
+import { useHistory } from "react-router-dom";
+
 import AuthContext from "../../context/auth-context"
 
 
 export default function LoginForm() {
+
+  let history = useHistory();
 
   const emailValueRef = useRef()
   const passwordeValueRef = useRef()
@@ -17,7 +21,7 @@ export default function LoginForm() {
 
     //validation
 
-    fetch('/api/login', {
+    fetch('http://localhost:3001/api/log/login', {
       method: 'POST',
       body: JSON.stringify({
         email: enteredEmail,
@@ -38,9 +42,11 @@ export default function LoginForm() {
         })
       }
     }).then((data) => {
-
-      //need to replace woth what the actual data and token reflect
+      console.log(data)
+      //const experationTime = new Date(new Date().getTime() + (+data.expiresIn * 1000))
+      history.replace('/')
       authCtx.login(data.token)
+
     })
 
   }

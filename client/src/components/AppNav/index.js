@@ -23,6 +23,7 @@ import { PlusIcon as PlusIconSolid } from '@heroicons/react/solid'
 import AddCouselorForm from '../../pages/AddCouselorForm'
 import AddResidentForm from '../../pages/AddResidentForm';
 import Counselor from '../../pages/Counselors';
+import Logout from '../Logout/Logout'
 import AuthContext from '../../context/auth-context';
 
 
@@ -61,10 +62,10 @@ export default function AppNav() {
       ))
   }
 
-  const logoutHandler = () => {
-    authCtx.logout()
-    //can redirect user here
-  }
+  // const logoutHandler = () => {
+  //   authCtx.logout()
+  //   //can redirect user here
+  // }
 
 
   return (
@@ -362,6 +363,9 @@ export default function AppNav() {
                   </Route>
                   <Route exact path="/student">
                     <AddResidentForm />
+                  </Route>
+                  <Route exact path="/logout">
+                    <Logout />
                   </Route>
                   <Route path="*" >
                     <h1 className="text-5xl text-red-500 m-12">404 Page not found</h1>
