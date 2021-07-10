@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "@react-pdf/renderer": "^2.0.16",
-    "bcrypt": "^5.0.0",
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.1",
     "cors": "^2.8.5",
