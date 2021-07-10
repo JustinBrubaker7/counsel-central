@@ -43,20 +43,6 @@ router.post("/login", async (req, res) => {
 
       isAdmin = false;
       theUser = userCheck;
-
-      //res.json({ user: userCheck, message: "You are logged in!" });
-      const payload = {
-        id: theUser.id,
-        isAdmin: isAdmin,
-      };
-
-      const user_token = await jwt.encode(
-        payload,
-        "secret",
-        (algorithm = "HS256")
-      );
-      console.log(user_token);
-      console.log("Youre logged in as a pleb");
     } else {
       const adminPassword = await userCheck.checkPassword(req.body.password);
 
@@ -71,7 +57,26 @@ router.post("/login", async (req, res) => {
 
       console.log("Youre logged in as a lord of winterfell");
       //res.json({ user: userCheck, message: "You are logged in!" });
+      console.log("Youre logged in as a pleb");
     }
+
+    //res.json({ user: userCheck, message: "You are logged in!" });
+    const payload = {
+      id: theUser.id,
+      isAdmin: isAdmin,
+    };
+
+    const user_token = jwt.sign(payload, "bob", {
+      expiresIn: 86400,
+      algorithm: "HS256",
+    });
+    console.log(user_token);
+
+    res.send(user_token);
+
+    // const verify = jwt.verify(user_token, "bob");
+
+    // console.log(verify);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -79,6 +84,7 @@ router.post("/login", async (req, res) => {
 
 router.get("/login", async (req, res) => {});
 
+// Create counselors on /api/log/signup
 router.post("/signup", async (req, res) => {
   try {
     const newUser = await Counselor.create({
@@ -88,6 +94,16 @@ router.post("/signup", async (req, res) => {
       center_id: req.body.center_id,
     });
 
+    console.log(newUser);
+    res.send("Comgramtulatins you signed up");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// Create counselors on /api/log/signup
+router.post("/newuser", async (req, res) => {
+  try {
     console.log(newUser);
     res.send("Comgramtulatins you signed up");
   } catch (err) {
