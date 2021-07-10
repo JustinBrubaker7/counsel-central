@@ -3,35 +3,35 @@ const { Counselor } = require("../models");
 const counselorData = [
   {
     name: "Andrew Smith",
-    email: "asmith@counselcentral.org",
+    email: "asmith@example.com",
     password: "password1234",
     center_id: 1,
   },
 
   {
     name: "Kobe Bryant",
-    email: "kbryant@counselcentral.org",
+    email: "kbryant@example.org",
     password: "password1234",
     center_id: 1,
   },
 
   {
     name: "Andrew Yasrebi",
-    email: "ayasrebi@counselcentral.org",
+    email: "ayasrebi@example.com",
     password: "password1234",
     center_id: 2,
   },
 
   {
     name: "Yao Ming",
-    email: "yming@counselcentral.org",
+    email: "yming@example.com",
     password: "password1234",
     center_id: 2,
   },
 
   {
     name: "Tracy Macgrady",
-    email: "tmac@counselcentral.org",
+    email: "tmac@example.com",
     password: "password1234",
     center_id: 2,
   },
