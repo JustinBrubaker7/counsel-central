@@ -95,19 +95,6 @@ router.get("/login", async (req, res) => {
   }
 });
 
-// Check to see if the token sent is correct /api/log/checktoken
-router.post("/checktoken", async (req, res) => {
-  try {
-    const verify = jwt.verify(req.body.token, "bob");
-
-    if (verify) {
-      res.send({ verify });
-    }
-  } catch (err) {
-    res.send({ loggedIn: false, message: "Error with logging in" });
-  }
-});
-
 // Create counselors on /api/log/signup
 router.post("/signup", async (req, res) => {
   try {

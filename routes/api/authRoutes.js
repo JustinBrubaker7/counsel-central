@@ -5,13 +5,17 @@ const bcrypt = require("bcrypt");
 
 // ---------- Working On Authentication ----------------
 
-// Routes all defined on /api/auth
-// router.post("/", async (req, res) => {
-//   const theString = JSON.stringify(req.body);
-//   const newString = await bcrypt.hash(theString, 7);
-//   console.log(newString);
+// Check to see if the token sent is correct /api/auth/checktoken
+router.post("/checktoken", async (req, res) => {
+  try {
+    const verify = jwt.verify(req.body.token, "bob");
 
-//   res.send(newString);
-// });
+    if (verify) {
+      res.send({ verify });
+    }
+  } catch (err) {
+    res.send({ loggedIn: false, message: "Error with logging in" });
+  }
+});
 
 module.exports = router;
