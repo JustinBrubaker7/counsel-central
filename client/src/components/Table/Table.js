@@ -89,7 +89,7 @@ export default function Table() {
                                         <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{resident.age}</td>
                                         <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{resident.age}</td>
                                         <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{resident.counselor.name}</td>
-                                        <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{Moment(resident.createdAt, "YYYYMMDD").fromNow()}</td>
+                                        <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{Moment(resident.createdAt, "YYYY-MM-DD").fromNow()}</td>
                                         <td className="px-4 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <a href="#" className="text-prussian hover:text-prussian">
                                                 Add Comment

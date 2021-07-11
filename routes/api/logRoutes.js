@@ -5,10 +5,11 @@ const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 const transporter = require("./nodemailer");
 const jwt = require("jsonwebtoken");
+const cors = require("cors");
 // Routes all defined on /api/log
 
 // Login route /api/log/login
-router.post("/login", async (req, res) => {
+router.post("/login", cors(), async (req, res) => {
   console.log(req.body);
   try {
     let isAdmin;
@@ -67,12 +68,12 @@ router.post("/login", async (req, res) => {
     };
 
     const user_token = jwt.sign(payload, "bob", {
-      expiresIn: 86400,
+      expiresIn: 7200,
       algorithm: "HS256",
     });
     console.log(user_token);
-
-    res.send(user_token);
+    res.status(200).send({ token: user_token });
+    // res.send(user_token);
 
     const verify = jwt.verify(user_token, "bob");
 

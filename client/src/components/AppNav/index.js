@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useContext } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
   BellIcon,
@@ -9,7 +9,6 @@ import {
   UserCircleIcon,
   XIcon,
   CogIcon,
-  HeartIcon,
   UserGroupIcon,
 } from '@heroicons/react/outline'
 import { SearchIcon } from '@heroicons/react/solid'
@@ -24,6 +23,8 @@ import { PlusIcon as PlusIconSolid } from '@heroicons/react/solid'
 import AddCouselorForm from '../../pages/AddCouselorForm'
 import AddResidentForm from '../../pages/AddResidentForm';
 import Counselor from '../../pages/Counselors';
+import Logout from '../Logout/Logout'
+import AuthContext from '../../context/auth-context';
 
 
 const userNavigation = [
@@ -41,6 +42,7 @@ function classNames(...classes) {
 }
 
 export default function AppNav() {
+
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [navigation, setNavigation] = useState([
     { name: 'Dashboard', href: '/', icon: HomeIcon, current: false },
@@ -51,13 +53,19 @@ export default function AppNav() {
     { name: 'Settings', href: '/settings', icon: CogIcon, current: false },
   ])
 
+  //Context
+  const authCtx = useContext(AuthContext)
 
   function handleMenuClass(name, e) {
     setNavigation(
       navigation.map(item => name === item.name ? { ...item, current: true } : { ...item, current: false }
       ))
-
   }
+
+  // const logoutHandler = () => {
+  //   authCtx.logout()
+  //   //can redirect user here
+  // }
 
 
   return (
@@ -355,6 +363,12 @@ export default function AppNav() {
                   </Route>
                   <Route exact path="/student">
                     <AddResidentForm />
+                  </Route>
+                  <Route exact path="/logout">
+                    <Logout />
+                  </Route>
+                  <Route path="*" >
+                    <h1 className="text-5xl text-red-500 m-12">404 Page not found</h1>
                   </Route>
                 </Switch>
                 {/* /End replace */}
