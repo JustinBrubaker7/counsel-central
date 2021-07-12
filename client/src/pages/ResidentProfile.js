@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Title from '../components/Title/Title'
 
 import API from '../utils/API'
 
 
 const ResidentProfile = () => {
+
+    const [resident, setResident] = useState({})
+
 
     const getResidentIdFromUrl = () =>{
         const pathName = window.location.pathname
@@ -13,16 +16,22 @@ const ResidentProfile = () => {
         return residentId
     }
 
+    async function fetchResident(id) {
+        const residentId = getResidentIdFromUrl()
+        const response = await API.getSingleResident(residentId)
+        const data = await response.json()
+        setResident(data)
+    }
+
 
     useEffect(() => {
-        const residentId = getResidentIdFromUrl()
-        API.getResident(residentId)
-        console.log(residentId)
-    })
+        fetchResident()
+        
+    }, [])
 
     return (
         <div>
-            <Title title={"NAME"} />
+            <Title title={resident.name} />
         </div>
     )
 }
