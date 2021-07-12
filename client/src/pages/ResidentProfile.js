@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import Title from '../components/Title/Title'
+import ResidentInfo from '../components/ResidentInfo/ResidentInfo'
+
+
 
 import API from '../utils/API'
 
@@ -7,9 +9,9 @@ import API from '../utils/API'
 const ResidentProfile = () => {
 
     const [resident, setResident] = useState({})
+    const [isLoading, setIsLoading] = useState(false)
 
-
-    const getResidentIdFromUrl = () =>{
+    const getResidentIdFromUrl = () => {
         const pathName = window.location.pathname
         const trimPath = pathName.split('/', 10)
         const residentId = trimPath[2]
@@ -17,21 +19,24 @@ const ResidentProfile = () => {
     }
 
     async function fetchResident(id) {
+        setIsLoading(true)
         const residentId = getResidentIdFromUrl()
         const response = await API.getSingleResident(residentId)
-        const data = await response.json()
-        setResident(data)
+        console.log(response.data[0])
+        //const data = await response.json()
+        setResident(response.data[0])
+        setIsLoading(false)
     }
 
 
     useEffect(() => {
         fetchResident()
-        
+
     }, [])
 
     return (
         <div>
-            <Title title={resident.name} />
+            {isLoading ? <h1>loading....</h1> : <ResidentInfo resident={resident} />}
         </div>
     )
 }
