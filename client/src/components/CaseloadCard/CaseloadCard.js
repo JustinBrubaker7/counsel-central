@@ -1,92 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { MailIcon, PhoneIcon, PlusIcon, UserIcon } from '@heroicons/react/solid'
+import { PlusIcon, UserIcon } from '@heroicons/react/solid'
 
-// const people = [
-//     {
-//         name: 'Jane Cooper',
-//         title: 'Regional Paradigm Technician',
-//         legnth: '7 Months',
-//         email: 'janecooper@example.com',
-//         telephone: '+1-202-555-0170',
-//         imageUrl:
-//             'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-//     },
-//     {
-//         name: 'Jane Cooper',
-//         title: 'Regional Paradigm Technician',
-//         legnth: '7 Months',
-//         email: 'janecooper@example.com',
-//         telephone: '+1-202-555-0170',
-//         imageUrl:
-//             'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-//     },
-//     {
-//         name: 'Jane Cooper',
-//         title: 'Regional Paradigm Technician',
-//         legnth: '7 Months',
-//         email: 'janecooper@example.com',
-//         telephone: '+1-202-555-0170',
-//         imageUrl:
-//             'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-//     },
-//     {
-//         name: 'Jane Cooper',
-//         title: 'Regional Paradigm Technician',
-//         legnth: '7 Months',
-//         email: 'janecooper@example.com',
-//         telephone: '+1-202-555-0170',
-//         imageUrl:
-//             'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-//     },
-//     {
-//         name: 'Jane Cooper',
-//         title: 'Regional Paradigm Technician',
-//         legnth: '7 Months',
-//         email: 'janecooper@example.com',
-//         telephone: '+1-202-555-0170',
-//         imageUrl:
-//             'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-//     },
-//     {
-//         name: 'Jane Cooper',
-//         title: 'Regional Paradigm Technician',
-//         legnth: '7 Months',
-//         email: 'janecooper@example.com',
-//         telephone: '+1-202-555-0170',
-//         imageUrl:
-//             'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-//     },
-//     {
-//         name: 'Jane Cooper',
-//         title: 'Regional Paradigm Technician',
-//         legnth: '7 Months',
-//         email: 'janecooper@example.com',
-//         telephone: '+1-202-555-0170',
-//         imageUrl:
-//             'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-//     },
-//     {
-//         name: 'Jane Cooper',
-//         title: 'Regional Paradigm Technician',
-//         legnth: '7 Months',
-//         email: 'janecooper@example.com',
-//         telephone: '+1-202-555-0170',
-//         imageUrl:
-//             'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-//     },
-//     {
-//         name: 'Jane Cooper',
-//         title: 'Regional Paradigm Technician',
-//         legnth: '7 Months',
-//         email: 'janecooper@example.com',
-//         telephone: '+1-202-555-0170',
-//         imageUrl:
-//             'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-//     },
-
-
-//     // More people...
-// ]
 
 export default function CaseloadCard({ residents }) {
     return (
@@ -112,7 +26,7 @@ export default function CaseloadCard({ residents }) {
                         <div className="-mt-px flex divide-x divide-gray-200">
                             <div className="w-0 flex-1 flex">
                                 <a
-                                    href="/profile"
+                                    href={`/profile/${resident.id}`}
                                     className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500"
                                 >
                                     <UserIcon className="w-5 h-5 text-gray-400" aria-hidden="true" />
