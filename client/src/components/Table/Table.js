@@ -1,41 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import API from '../../utils/API'
 import Moment from 'moment'
 
-const people = [
-    { name: 'Jane Cooper', age: '21', counselor: 'Mark Fisher', length: '7 Months' },
-    { name: 'Cody Fisher', age: '45', counselor: 'Jannet Golzika', length: '12 Days' },
-    { name: 'Jane Cooper', age: '21', counselor: 'Mark Fisher', length: '7 Months' },
-    { name: 'Cody Fisher', age: '45', counselor: 'Jannet Golzika', length: '12 Days' },
-    { name: 'Jane Cooper', age: '21', counselor: 'Mark Fisher', length: '7 Months' },
-    { name: 'Cody Fisher', age: '45', counselor: 'Jannet Golzika', length: '12 Days' },
-    { name: 'Jane Cooper', age: '21', counselor: 'Mark Fisher', length: '7 Months' },
-    { name: 'Cody Fisher', age: '45', counselor: 'Jannet Golzika', length: '12 Days' },
-    { name: 'Jane Cooper', age: '21', counselor: 'Mark Fisher', length: '7 Months' },
-    { name: 'Cody Fisher', age: '45', counselor: 'Jannet Golzika', length: '12 Days' },
-    { name: 'Jane Cooper', age: '21', counselor: 'Mark Fisher', length: '7 Months' },
-    { name: 'Cody Fisher', age: '45', counselor: 'Jannet Golzika', length: '12 Days' },
-    { name: 'Jane Cooper', age: '21', counselor: 'Mark Fisher', length: '7 Months' },
-    { name: 'Cody Fisher', age: '45', counselor: 'Jannet Golzika', length: '12 Days' },
 
-    // More people...
-]
-
+import AuthContext from '../../context/auth-context'
 
 export default function Table() {
+    const authCtx = useContext(AuthContext)
 
     const [residents, setResidents] = useState([])
-
-    useEffect(() => {
-        fetchResidentHandler(1)
-    }, [])
-
 
     async function fetchResidentHandler(id) {
         const getData = await API.getResidents(id)
         const data = await getData.data
         setResidents(data)
     }
+
+    useEffect(() => {
+        fetchResidentHandler(authCtx.center_id)
+    }, [])
+
+
+
+
 
 
     return (
@@ -62,7 +49,7 @@ export default function Table() {
                                         scope="col"
                                         className="px-4 py-3 text-left text-sm font-medium text-white uppercase tracking-wider"
                                     >
-                                        Age
+                                        Gender
                                     </th>
                                     <th
                                         scope="col"
@@ -87,7 +74,7 @@ export default function Table() {
 
                                         <td className="px-4 py-4 whitespace-nowrap text-md font-medium text-gray-900">{resident.resident_firstName + " " + resident.resident_lastName}</td>
                                         <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{resident.age}</td>
-                                        <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{resident.age}</td>
+                                        <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{resident.gender}</td>
                                         <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{resident.counselor.name}</td>
                                         <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{Moment(resident.createdAt, "YYYY-MM-DD").fromNow()}</td>
                                         <td className="px-4 py-4 whitespace-nowrap text-right text-sm font-medium">

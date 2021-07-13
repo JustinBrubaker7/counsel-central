@@ -6,7 +6,10 @@ const noteRoutes = require("./noteRoutes");
 const authRoutes = require("./authRoutes");
 const residentRoutes = require("./residentRoutes");
 const getRoutes = require("./getRoutes");
+const centerRoutes = require("./centerRoutes")
 
+
+router.use("/center", centerRoutes);
 router.use("/log", logRoutes);
 router.use("/counselor", counselorRoutes);
 router.use("/resident", residentRoutes);

@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
+
 let logoutTimer;
 
 const AuthContext = React.createContext({
     token: '',
     isLoggedIn: false,
-    
+    id: '',
+    center_id: '',
+
     login: (token) => { },
     logout: () => { }
 
@@ -46,6 +49,9 @@ export const AuthContextProvider = (props) => {
         initialToken = tokenData.token
     }
     const [token, setToken] = useState(initialToken);
+    const [id, setId] = useState()
+    const [centerId, setCenterId] = useState()
+
     const userIsLoggedIn = !!token;
 
 
@@ -60,6 +66,52 @@ export const AuthContextProvider = (props) => {
         }
     }
 
+
+
+
+    useEffect(() => {
+        if (tokenData) {
+            //console.log(tokenData.duration)
+            logoutTimer = setTimeout(logoutHandler, tokenData.duration)
+            verifyCredentials(token)
+        }
+
+    }, [])
+
+    const verifyCredentials = async (token) => {
+        //console.log(token)
+        await fetch('http://localhost:3001/api/auth/checktoken', {
+            method: "POST",
+            body: JSON.stringify({
+                token: token
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => {
+                if (res.ok) {
+                    //console.log(res)
+                    return res.json()
+
+                } else {
+                    res.json().then(data => {
+                        let errorMessage = 'Token Failed!'
+                        //console.log(data)
+                        alert(errorMessage)
+                        throw new Error(errorMessage)
+                    })
+                }
+            }).then((data) => {
+                const id = data.verify.id
+                const centerId = data.verify.center_id
+                //const experationTime = new Date(new Date().getTime() + (+data.expiresIn * 1000))
+                setId(id)
+                setCenterId(centerId)
+
+            })
+    }
+
     const loginHandler = (token) => {
         const experationTime = 7200
         setToken(token)
@@ -69,17 +121,16 @@ export const AuthContextProvider = (props) => {
         const remainingTime = calcualteRemainingTime(experationTime);
 
         logoutTimer = setTimeout(logoutHandler, remainingTime)
+        verifyCredentials(token)
     }
-
-    useEffect(() => {
-        if (tokenData) {
-            console.log(tokenData.duration)
-            logoutTimer = setTimeout(logoutHandler, tokenData.duration)
-        }
-    }, [tokenData])
+    // useEffect(() => {
+    //     verifyCredentials(token)
+    // }, [])
 
     const contextValue = {
         token: token,
+        id: id,
+        center_id: centerId,
         isLoggedIn: userIsLoggedIn,
         login: loginHandler,
         logout: logoutHandler

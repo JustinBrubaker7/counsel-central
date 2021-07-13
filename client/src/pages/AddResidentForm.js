@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const AddResidentForm = () => {
   return (
@@ -8,16 +8,22 @@ const AddResidentForm = () => {
           <div className="">
             <div>
               <div>
-                <h2 className="text-xl leading-6 font-medium text-gray-900">Add a new resident</h2>
+                <h2 className="text-xl leading-6 font-medium text-gray-900">
+                  Add a new resident
+                </h2>
                 <p className="mt-1 text-sm text-gray-500">
-                  Sign up a new resident to you program. Make sure to assign them to a couselor
+                  Sign up a new resident to you program. Make sure to assign
+                  them to a couselor
                 </p>
               </div>
             </div>
-            <div className='space-y-8 divide-y divide-gray-200'>
+            <div className="space-y-8 divide-y divide-gray-200">
               <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6 ">
                 <div className="sm:col-span-3">
-                  <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="first_name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     First name
                   </label>
                   <div className="mt-1">
@@ -31,7 +37,10 @@ const AddResidentForm = () => {
                   </div>
                 </div>
                 <div className="sm:col-span-3">
-                  <label htmlFor="last_name" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="last_name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Last name
                   </label>
                   <div className="mt-1">
@@ -45,7 +54,10 @@ const AddResidentForm = () => {
                   </div>
                 </div>
                 <div className="sm:col-span-2">
-                  <label htmlFor="age" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="age"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Age
                   </label>
                   <div className="mt-1">
@@ -58,7 +70,10 @@ const AddResidentForm = () => {
                   </div>
                 </div>
                 <div className="sm:col-span-2">
-                  <label htmlFor="dob" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="dob"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Date of Birth
                   </label>
                   <div className="mt-1">
@@ -72,7 +87,10 @@ const AddResidentForm = () => {
                   </div>
                 </div>
                 <div className="sm:col-span-2">
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Phone
                   </label>
                   <div className="mt-1">
@@ -86,7 +104,10 @@ const AddResidentForm = () => {
                   </div>
                 </div>
                 <div className="sm:col-span-6">
-                  <label htmlFor="street_address" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="street_address"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Street address
                   </label>
                   <div className="mt-1">
@@ -101,7 +122,10 @@ const AddResidentForm = () => {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label htmlFor="city" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="city"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     City
                   </label>
                   <div className="mt-1">
@@ -115,7 +139,10 @@ const AddResidentForm = () => {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label htmlFor="state" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="state"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     State / Province
                   </label>
                   <div className="mt-1">
@@ -129,7 +156,10 @@ const AddResidentForm = () => {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label htmlFor="zip" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="zip"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     ZIP / Postal
                   </label>
                   <div className="mt-1">
@@ -144,7 +174,10 @@ const AddResidentForm = () => {
                 </div>
                 {/* This needs to call from Database and loop through center couselors */}
                 <div className="sm:col-span-2">
-                  <label htmlFor="counselor" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="counselor"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Counselor
                   </label>
                   <select
@@ -160,7 +193,10 @@ const AddResidentForm = () => {
                   </select>
                 </div>
                 <div className="sm:col-span-2">
-                  <label htmlFor="allergies" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="allergies"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Allergies
                   </label>
                   <div className="mt-1">
@@ -173,7 +209,10 @@ const AddResidentForm = () => {
                   </div>
                 </div>
                 <div className="sm:col-span-2">
-                  <label htmlFor="gender" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="gender"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Gender
                   </label>
                   <select
@@ -189,7 +228,10 @@ const AddResidentForm = () => {
                   </select>
                 </div>
                 <div className="sm:col-span-2">
-                  <label htmlFor="isDisabled" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="isDisabled"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Does the resident you have a disablility
                   </label>
                   <select
@@ -204,7 +246,10 @@ const AddResidentForm = () => {
                   </select>
                 </div>
                 <div className="sm:col-span-4">
-                  <label htmlFor="disabled_explain" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="disabled_explain"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     If yes, explain
                   </label>
                   <div className="mt-1">
@@ -220,16 +265,20 @@ const AddResidentForm = () => {
 
               <div className="pt-8">
                 <div>
-                  <h2 className="text-xl leading-6 font-medium text-gray-900">Emergency Contact</h2>
+                  <h2 className="text-xl leading-6 font-medium text-gray-900">
+                    Emergency Contact
+                  </h2>
                   <p className="mt-1 text-sm text-gray-500">
                     Provide information about the residents emergency contact
                   </p>
                 </div>
               </div>
               <div className="mt-6 pt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-
                 <div className="sm:col-span-2">
-                  <label htmlFor="emergency_name" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="emergency_name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Name
                   </label>
                   <div className="mt-1">
@@ -244,7 +293,10 @@ const AddResidentForm = () => {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label htmlFor="emergency_phone" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="emergency_phone"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Phone
                   </label>
                   <div className="mt-1">
@@ -258,7 +310,10 @@ const AddResidentForm = () => {
                   </div>
                 </div>
                 <div className="sm:col-span-2">
-                  <label htmlFor="relationship" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="relationship"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Relationship
                   </label>
                   <select
@@ -274,11 +329,13 @@ const AddResidentForm = () => {
                     <option>Sibling</option>
                     <option>Friend</option>
                     <option>Other</option>
-
                   </select>
                 </div>
                 <div className="sm:col-span-6">
-                  <label htmlFor="street_address" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="street_address"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Street address
                   </label>
                   <div className="mt-1">
@@ -293,7 +350,10 @@ const AddResidentForm = () => {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label htmlFor="city" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="city"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     City
                   </label>
                   <div className="mt-1">
@@ -307,7 +367,10 @@ const AddResidentForm = () => {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label htmlFor="state" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="state"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     State / Province
                   </label>
                   <div className="mt-1">
@@ -321,7 +384,10 @@ const AddResidentForm = () => {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label htmlFor="zip" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="zip"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     ZIP / Postal
                   </label>
                   <div className="mt-1">
@@ -337,16 +403,20 @@ const AddResidentForm = () => {
               </div>
               <div className="pt-8">
                 <div>
-                  <h2 className="text-xl leading-6 font-medium text-gray-900">Drug History</h2>
+                  <h2 className="text-xl leading-6 font-medium text-gray-900">
+                    Drug History
+                  </h2>
                   <p className="mt-1 text-sm text-gray-500">
                     Provide information about the residents drug history
                   </p>
                 </div>
               </div>
               <div className="mt-6 pt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-
                 <div className="sm:col-span-3">
-                  <label htmlFor="drug_of_choice" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="drug_of_choice"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Drug of choice
                   </label>
                   <div className="mt-1">
@@ -360,7 +430,10 @@ const AddResidentForm = () => {
                 </div>
 
                 <div className="sm:col-span-3">
-                  <label htmlFor="years_using" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="years_using"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Years using
                   </label>
                   <div className="mt-1">
@@ -373,7 +446,10 @@ const AddResidentForm = () => {
                   </div>
                 </div>
                 <div className="sm:col-span-3">
-                  <label htmlFor="last_used" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="last_used"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Last time used
                   </label>
                   <input
@@ -385,7 +461,10 @@ const AddResidentForm = () => {
                   />
                 </div>
                 <div className="sm:col-span-3">
-                  <label htmlFor="hasDetoxed" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="hasDetoxed"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Has the resident detoxed
                   </label>
                   <select
@@ -399,10 +478,7 @@ const AddResidentForm = () => {
                     <option>Not applicable</option>
                   </select>
                 </div>
-
               </div>
-
-
             </div>
           </div>
           <div className="pt-5">
@@ -424,7 +500,7 @@ const AddResidentForm = () => {
         </form>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default AddResidentForm;
