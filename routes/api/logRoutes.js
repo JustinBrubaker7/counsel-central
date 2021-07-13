@@ -62,10 +62,22 @@ router.post("/login", cors(), async (req, res) => {
     }
 
     //res.json({ user: userCheck, message: "You are logged in!" });
-    const payload = {
-      id: theUser.id,
-      isAdmin: isAdmin,
-    };
+    let payload;
+
+    if (isAdmin === true) {
+      payload = {
+        id: theUser.id,
+        isAdmin: isAdmin,
+      };
+    }
+
+    if (isAdmin === true) {
+      payload = {
+        id: theUser.id,
+        center_id: theUser.center_id,
+        isAdmin: isAdmin,
+      };
+    }
 
     const user_token = jwt.sign(payload, "bob", {
       expiresIn: 7200,
