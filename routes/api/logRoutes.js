@@ -67,6 +67,7 @@ router.post("/login", cors(), async (req, res) => {
     if (isAdmin === true) {
       payload = {
         id: theUser.id,
+        center_id: theUser.id,
         isAdmin: isAdmin,
       };
     }
