@@ -31,7 +31,6 @@ const ResidentProfile = () => {
 
     useEffect(() => {
         fetchResident()
-
     }, [])
 
     return (

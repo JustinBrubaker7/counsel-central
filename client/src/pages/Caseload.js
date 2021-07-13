@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react';
 import CaseloadCard from '../components/CaseloadCard/CaseloadCard'
 import Title from '../components/Title/Title'
 
+import AuthContext from '../context/auth-context'
 
 const Caseload = () => {
 
+    const authCtx = useContext(AuthContext)
     const [residents, setResidents] = useState([])
 
     useEffect(() => {
-        fetchCasloadHandler(1)
+        fetchCasloadHandler(authCtx.id)
     }, [])
 
     async function fetchCasloadHandler(id) {

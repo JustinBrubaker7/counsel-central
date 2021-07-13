@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { PlusIcon, UserIcon } from '@heroicons/react/solid'
 
 
@@ -9,6 +9,10 @@ export default function CaseloadCard({ residents }) {
     const handleLoading = () => {
         setIsLoading(true)
     }
+
+    useEffect(() => {
+        setIsLoading(false)
+    }, [])
 
     return (
         <>
