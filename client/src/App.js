@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import "./App.css";
 import "./index.css";
 import AppNav from "./components/AppNav";
-
 import { BrowserRouter as Router } from "react-router-dom";
 import ExternalRoute from "./components/ExternalRoute/ExternalRoute";
+import AuthContext from "./context/auth-context";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const authCtx = useContext(AuthContext);
+
+  const loggedIn = authCtx.isLoggedIn;
 
   return (
     <>
-      <Router>
-        {!loggedIn ? <ExternalRoute></ExternalRoute> : <AppNav />}
-      </Router>
+      <Router>{loggedIn ? <ExternalRoute></ExternalRoute> : <AppNav />}</Router>
     </>
   );
 }

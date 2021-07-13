@@ -62,6 +62,7 @@ Center.init(
       validate: {
         isEmail: true,
       },
+      unique: true,
     },
     phone: {
       type: DataTypes.BIGINT(20),
@@ -82,6 +83,7 @@ Center.init(
     hooks: {
       beforeCreate: async (newUserData) => {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        console.log("Hook is working");
         return newUserData;
       },
     },
