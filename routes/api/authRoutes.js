@@ -2,9 +2,8 @@ const router = require("express").Router();
 const { Center, Counselor, Resident } = require("../../models");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
 const cors = require("cors")
-
 // ---------- Working On Authentication ----------------
 
 // Check to see if the token sent is correct /api/auth/checktoken
