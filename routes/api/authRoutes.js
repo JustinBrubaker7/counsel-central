@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { Center, Counselor, Resident } = require("../../models");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 // ---------- Working On Authentication ----------------
 
