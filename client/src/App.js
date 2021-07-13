@@ -19,8 +19,8 @@ function App() {
     <>
       <Router >
 
-        {loggedIn ? <ExternalRoute></ExternalRoute> : <AppNav />}
-        
+        {!loggedIn ? <ExternalRoute></ExternalRoute> : <AppNav />}
+
 
       </Router>
     </>
