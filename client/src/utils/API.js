@@ -8,51 +8,46 @@ export default {
   },
 
   getUsers: function () {
-    return axios.get('https://randomuser.me/api/?results=10')
+    return axios.get("https://randomuser.me/api/?results=10");
   },
 
   getPoplog: function () {
-    return axios.get('http://localhost:3001/api/get/resident')
+    return axios.get("http://localhost:3001/api/get/resident");
   },
 
   //gets all residents that belong to the couselor | pass in the counselor ID
   getResident: function (id) {
-    return axios.get(`http://localhost:3001/api/get/counselor-residents/${id}`)
+    return axios.get(`http://localhost:3001/api/get/counselor-residents/${id}`);
   },
   getResidents: function (id) {
-    return axios.get(`http://localhost:3001/api/get/center-residents/${id}`)
+    return axios.get(`http://localhost:3001/api/get/center-residents/${id}`);
   },
 
   //getss all counselors at a given center by ID
   getCounselors: function (id) {
-    return axios.get(`http://localhost:3001/api/get/center-counselors/${id}`)
+    return axios.get(`http://localhost:3001/api/get/center-counselors/${id}`);
   },
-
 
   getCaseload: function () {
-    return axios.get('/api/caseload')
+    return axios.get("/api/caseload");
   },
 
-
-
   addCounselor: function () {
-    return axios.get('/api/admin/create')
+    return axios.get("/api/admin/create");
   },
 
   removeCounselor: function () {
-    return axios.get('/api/admin/remove')
+    return axios.get("/api/admin/remove");
   },
 
   addResident: function () {
-    return axios.get('/api/counselor/create')
+    return axios.get("/api/counselor/create");
   },
 
   removeResident: function () {
-    return axios.get('/api/counselor/remove')
+    return axios.get("/api/counselor/remove");
   },
-  //addNote: function(){
-  //  return axios.get(notes from counsellor route)
-  //}
-
+  addNote: function () {
+    return axios.get("api/note/create");
+  },
 };
-
