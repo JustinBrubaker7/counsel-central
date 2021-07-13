@@ -119,7 +119,7 @@ router.post("/signup", async (req, res) => {
     });
 
     console.log(newUser);
-    res.send("Comgramtulatins you signed up");
+    res.status(200).send("you are signed up");
   } catch (err) {
     console.log(err);
   }
@@ -146,8 +146,8 @@ router.post("/newuser", async (req, res) => {
     var mailOptions = {
       from: process.env.EMAIL_USER,
       to: email,
-      subject: "Sign Up For Counsel Central",
-      text: `Follow this link to signup at Counsel Central: http://localhost:3000/register/token=${token}`,
+      subject: "Your Center has asked you to join Counsel Central",
+      text: `Follow this link to signup at Counsel Central: http://localhost:3000/register-counselor/token=${token}`,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
