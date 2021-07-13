@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
+
 let logoutTimer;
 
 const AuthContext = React.createContext({
     token: '',
     isLoggedIn: false,
-    
+    id: '',
+
     login: (token) => { },
     logout: () => { }
 
@@ -46,6 +48,7 @@ export const AuthContextProvider = (props) => {
         initialToken = tokenData.token
     }
     const [token, setToken] = useState(initialToken);
+    const [id, setId] = useState({})
     const userIsLoggedIn = !!token;
 
 
@@ -71,15 +74,54 @@ export const AuthContextProvider = (props) => {
         logoutTimer = setTimeout(logoutHandler, remainingTime)
     }
 
+
+
     useEffect(() => {
         if (tokenData) {
-            console.log(tokenData.duration)
+            //console.log(tokenData.duration)
             logoutTimer = setTimeout(logoutHandler, tokenData.duration)
         }
+
     }, [tokenData])
+
+    const verifyCredentials = (token) => {
+        console.log(token)
+        fetch('http://localhost:3001/api/auth/checktoken', {
+            method: "POST",
+            body: JSON.stringify({
+                token: token
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => {
+                if (res.ok) {
+                    console.log(res)
+                    return res.json()
+
+                } else {
+                    res.json().then(data => {
+                        let errorMessage = 'Token Failed!'
+                        console.log(data)
+                        alert(errorMessage)
+                        throw new Error(errorMessage)
+                    })
+                }
+            }).then((data) => {
+                console.log(data)
+                //const experationTime = new Date(new Date().getTime() + (+data.expiresIn * 1000))
+                setId(data)
+            })
+    }
+
+    useEffect(() => {
+        verifyCredentials(token)
+    }, [])
 
     const contextValue = {
         token: token,
+        id: id,
         isLoggedIn: userIsLoggedIn,
         login: loginHandler,
         logout: logoutHandler

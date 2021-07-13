@@ -22,7 +22,7 @@ const ResidentProfile = () => {
         setIsLoading(true)
         const residentId = getResidentIdFromUrl()
         const response = await API.getSingleResident(residentId)
-        console.log(response.data[0])
+        //console.log(response.data[0])
         //const data = await response.json()
         setResident(response.data[0])
         setIsLoading(false)
@@ -36,7 +36,7 @@ const ResidentProfile = () => {
 
     return (
         <div>
-            {isLoading ? <h1>loading....</h1> : <ResidentInfo resident={resident} />}
+            {isLoading ? <h1 className="mt-20">Loading....</h1> : <ResidentInfo resident={resident} />}
         </div>
     )
 }
