@@ -41,4 +41,50 @@ router.post("/", cors(), async (req, res) => {
   }
 });
 
+// Creates a new Center /api/center/update
+// Not for password or email
+router.post("/update/:id", cors(), async (req, res) => {
+  try {
+    await Center.update(
+      {
+        where: {
+          id: req.params.id,
+        },
+      },
+      {
+        name: req.body.name,
+        address: req.body.address,
+        city: req.body.city,
+        state: req.body.state,
+        zipCode: req.body.zipCode,
+        residentCount: req.body.residentCount,
+        bedCount: req.body.bedCount,
+        counselorCount: req.body.counselorCount,
+        director_name: req.body.name,
+        phone: req.body.phone,
+      }
+    );
+    res.send("Center successfully updated");
+  } catch (err) {
+    console.log(err);
+    res.json(err);
+  }
+});
+
+// Creates a new Center /api/center/update
+// Not for password or email
+router.delete("/delete/:id", cors(), async (req, res) => {
+  try {
+    await Center.update({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.send("Center successfully deleted");
+  } catch (err) {
+    console.log(err);
+    res.json(err);
+  }
+});
+
 module.exports = router;

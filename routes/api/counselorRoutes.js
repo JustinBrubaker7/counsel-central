@@ -51,8 +51,6 @@ router.put("/update", async (req, res) => {
       {
         center_id: req.body.center_id,
         name: req.body.name,
-        email: req.body.email,
-        password: req.body.password,
       }
     ).then((data) => {
       res.send(data);
