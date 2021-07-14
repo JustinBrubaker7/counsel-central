@@ -11,21 +11,21 @@ groupEvent.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    event_name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    time: {
+    start: {
       type: DataTypes.STRING,
     },
-    date: {
+    end: {
       type: Date,
       allowNull: false,
     },
-    counselor_id: {
+    center_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "counselor",
+        model: "center",
         key: "id",
       },
     },
