@@ -87,4 +87,25 @@ router.delete("/delete/:id", cors(), async (req, res) => {
   }
 });
 
+// Updates a couselor /api/center/update/(center ID)
+router.put("/updatepass/:id", async (req, res) => {
+  try {
+    await Counselor.update(
+      {
+        where: {
+          id: req.body.id,
+        },
+      },
+      {
+        password: req.body.password,
+      }
+    ).then((data) => {
+      res.send(data);
+      res.json(data);
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 module.exports = router;

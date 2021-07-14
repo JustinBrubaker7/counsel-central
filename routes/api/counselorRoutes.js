@@ -61,4 +61,25 @@ router.put("/update", async (req, res) => {
   }
 });
 
+// Updates a couselor /api/counselor/updatepass/(counselor ID)
+router.put("/updatepass", async (req, res) => {
+  try {
+    await Counselor.update(
+      {
+        where: {
+          id: req.body.id,
+        },
+      },
+      {
+        password: req.body.password,
+      }
+    ).then((data) => {
+      res.send(data);
+      res.json(data);
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 module.exports = router;
