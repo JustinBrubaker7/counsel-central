@@ -23,7 +23,7 @@ router.post("/login", cors(), async (req, res) => {
 
     console.log(centerCheck);
 
-    if (centerCheck === {}) {
+    if (centerCheck === null) {
       const userCheck = await Counselor.findOne({
         where: {
           email: req.body.email,
@@ -46,21 +46,22 @@ router.post("/login", cors(), async (req, res) => {
       console.log("Youre logged in as a pleb");
       isAdmin = false;
       theUser = userCheck;
+    } else {
+      const adminPassword = await centerCheck.checkCenterPassword(
+        req.body.password
+      );
+
+      if (!adminPassword) {
+        res.status(400).json({ message: "Wrong email or password, try again" });
+        isAdmin = false;
+        return;
+      }
+
+      isAdmin = true;
+      theUser = centerCheck;
+
+      console.log("Youre logged in as a lord of winterfell");
     }
-    const adminPassword = await centerCheck.checkCenterPassword(
-      req.body.password
-    );
-
-    if (!adminPassword) {
-      res.status(400).json({ message: "Wrong email or password, try again" });
-      isAdmin = false;
-      return;
-    }
-
-    isAdmin = true;
-    theUser = centerCheck;
-
-    console.log("Youre logged in as a lord of winterfell");
 
     let payload;
 
