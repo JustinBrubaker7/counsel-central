@@ -14,7 +14,10 @@ router.post("/create", async (req, res) => {
   newNote = await Note.create({
     counselor_id: req.body.counselor_id,
     resident_id: req.body.resident_id,
-    body: req.params.body,
+    body: req.body.body,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    date: req.body.date,
   });
 });
 
@@ -27,7 +30,10 @@ router.post("/update", async (req, res) => {
       },
     },
     {
-      body: req.params.body,
+      body: req.body.body,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      date: req.body.date,
     }
   );
 });

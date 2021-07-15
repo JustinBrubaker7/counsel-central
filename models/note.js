@@ -11,17 +11,17 @@ Note.init(
       primaryKey: true,
       autoIncrement: true,
     },
-
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     body: {
       type: DataTypes.STRING,
     },
-    side_note: {
+    firstName: {
       type: DataTypes.STRING,
-      allowNull: false,
+    },
+    lastName: {
+      type: DataTypes.STRING,
+    },
+    date: {
+      type: DataTypes.STRING,
     },
     counselor_id: {
       type: DataTypes.INTEGER,
