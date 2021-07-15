@@ -51,6 +51,11 @@ Counselor.init(
         console.log("Hook is working");
         return newUserData;
       },
+      beforeUpdate: async (newUserData) => {
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        console.log("Hook is working");
+        return newUserData;
+      },
     },
     sequelize,
     freezeTableName: true,

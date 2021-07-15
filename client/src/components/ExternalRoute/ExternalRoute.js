@@ -7,6 +7,7 @@ import RegisterForm from '../../components/RegisterForm/RegisterForm';
 import FeatureSectionExternal from '../../components/FeatureSectionExternal/index';
 
 import { Switch, Route } from "react-router-dom";
+import NewCounsleor from '../../pages/NewCounselor';
 
 
 
@@ -39,6 +40,10 @@ function ExternalRoute() {
         <Route exact path="/register" >
           <ExternalNav />
           <RegisterForm />
+        </Route>
+        <Route exact path="/register-counselor/*" >
+          <ExternalNav />
+          <NewCounsleor />
         </Route>
         <Route path="*" >
           <ExternalNav />

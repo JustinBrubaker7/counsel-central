@@ -15,6 +15,7 @@ router.post("/login", cors(), async (req, res) => {
     let isAdmin;
     let theUser;
 
+
     const centerCheck = await Center.findOne({
       where: {
         email: req.body.email,
@@ -30,7 +31,7 @@ router.post("/login", cors(), async (req, res) => {
         },
       });
 
-      if (userCheck === null) {
+      if (!userCheck) {
         res.status(400).json({ message: "Wrong email or password, try again" });
         return;
       }
@@ -65,15 +66,13 @@ router.post("/login", cors(), async (req, res) => {
 
     let payload;
 
-    if (isAdmin === true) {
+    if (isAdmin) {
       payload = {
         id: theUser.id,
         center_id: theUser.id,
         isAdmin: isAdmin,
       };
-    }
-
-    if (isAdmin === false) {
+    } else if (isAdmin === false) {
       payload = {
         id: theUser.id,
         center_id: theUser.center_id,
@@ -85,13 +84,14 @@ router.post("/login", cors(), async (req, res) => {
       expiresIn: 7200,
       algorithm: "HS256",
     });
+
     console.log(user_token);
     res.status(200).send({ token: user_token });
     // res.send(user_token);
 
-    const verify = jwt.verify(user_token, "bob");
+    // const verify = jwt.verify(user_token, "bob");
 
-    console.log(verify);
+    // console.log(verify);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -120,7 +120,7 @@ router.post("/signup", async (req, res) => {
     });
 
     console.log(newUser);
-    res.send("Comgramtulatins you signed up");
+    res.status(200).send("you are signed up");
   } catch (err) {
     console.log(err);
   }
@@ -147,8 +147,8 @@ router.post("/newuser", async (req, res) => {
     var mailOptions = {
       from: process.env.EMAIL_USER,
       to: email,
-      subject: "Sign Up For Counsel Central",
-      text: `Follow this link to signup at Counsel Central: http://localhost:3000/register/token=${token}`,
+      subject: "Your Center has asked you to join Counsel Central",
+      text: `Follow this link to signup at Counsel Central: http://localhost:3000/register-counselor/token=${token}`,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
