@@ -15,6 +15,7 @@ router.post("/login", cors(), async (req, res) => {
     let isAdmin;
     let theUser;
 
+
     const centerCheck = await Center.findOne({
       where: {
         email: req.body.email,
@@ -23,14 +24,14 @@ router.post("/login", cors(), async (req, res) => {
 
     console.log(centerCheck);
 
-    if (centerCheck === {}) {
+    if (!centerCheck) {
       const userCheck = await Counselor.findOne({
         where: {
           email: req.body.email,
         },
       });
 
-      if (userCheck === null) {
+      if (!userCheck) {
         res.status(400).json({ message: "Wrong email or password, try again" });
         return;
       }
@@ -64,7 +65,7 @@ router.post("/login", cors(), async (req, res) => {
 
     let payload;
 
-    if (isAdmin === true) {
+    if (isAdmin) {
       payload = {
         id: theUser.id,
         center_id: theUser.id,
@@ -72,7 +73,7 @@ router.post("/login", cors(), async (req, res) => {
       };
     }
 
-    if (isAdmin === false) {
+    if (!isAdmin) {
       payload = {
         id: theUser.id,
         center_id: theUser.center_id,
@@ -84,13 +85,14 @@ router.post("/login", cors(), async (req, res) => {
       expiresIn: 7200,
       algorithm: "HS256",
     });
+
     console.log(user_token);
     res.status(200).send({ token: user_token });
     // res.send(user_token);
 
-    const verify = jwt.verify(user_token, "bob");
+    // const verify = jwt.verify(user_token, "bob");
 
-    console.log(verify);
+    // console.log(verify);
   } catch (err) {
     res.status(400).json(err);
   }

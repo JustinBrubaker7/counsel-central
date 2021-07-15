@@ -103,7 +103,8 @@ export const AuthContextProvider = (props) => {
                     })
                 }
             }).then((data) => {
-                const id = data.verify.id
+                console.log(data.verify)
+                //const id = data.verify.id
                 const centerId = data.verify.center_id
                 //const experationTime = new Date(new Date().getTime() + (+data.expiresIn * 1000))
                 setId(id)
