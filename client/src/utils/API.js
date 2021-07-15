@@ -28,9 +28,8 @@ export default {
     return axios.get(`http://localhost:3001/api/get/center-counselors/${id}`);
   },
   getSingleResident: function (id) {
-    return axios.get(`http://localhost:3001/api/get/resident/${id}`)
+    return axios.get(`http://localhost:3001/api/get/resident/${id}`);
   },
-
 
   getCaseload: function () {
     return axios.get("/api/caseload");

@@ -1,32 +1,31 @@
-import React, { useState, useEffect, useContext } from 'react';
-import CaseloadCard from '../components/CaseloadCard/CaseloadCard'
-import Title from '../components/Title/Title'
+import React, { useState, useEffect, useContext } from "react";
+import CaseloadCard from "../components/CaseloadCard/CaseloadCard";
+import Title from "../components/Title/Title";
 
-import AuthContext from '../context/auth-context'
+import AuthContext from "../context/auth-context";
 
 const Caseload = () => {
+  const authCtx = useContext(AuthContext);
+  const [residents, setResidents] = useState([]);
 
-    const authCtx = useContext(AuthContext)
-    const [residents, setResidents] = useState([])
+  useEffect(() => {
+    fetchCaseloadHandler(authCtx.id);
+  }, []);
 
-    useEffect(() => {
-        fetchCasloadHandler(authCtx.id)
-    }, [])
+  async function fetchCaseloadHandler(id) {
+    const response = await fetch(
+      `http://localhost:3001/api/get/counselor-residents/${id}`
+    );
+    const data = await response.json();
+    setResidents(data);
+  }
 
-    async function fetchCasloadHandler(id) {
-        const response = await fetch(`http://localhost:3001/api/get/counselor-residents/${id}`);
-        const data = await response.json()
-        setResidents(data)
-    }
+  return (
+    <div>
+      <Title title={"Caseload"} />
+      <CaseloadCard residents={residents} />
+    </div>
+  );
+};
 
-
-    return (
-        <div>
-            <Title title={"Caseload"} />
-            <CaseloadCard residents={residents} />
-
-        </div>
-    )
-}
-
-export default Caseload
+export default Caseload;

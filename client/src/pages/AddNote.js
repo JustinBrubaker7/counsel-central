@@ -1,6 +1,47 @@
-import React from "react";
+import React, { useContext, useRef, useEffect, useState } from "react";
+import AuthContext from "../context/auth-context";
 
 const AddNote = () => {
+  const authCtx = useContext(AuthContext);
+  const residentRef = useRef();
+  const lastNameRef = useRef();
+  const dateRef = useRef();
+  const notesRef = useRef();
+
+  const [auth, setAuth] = useState();
+  const [info, setInfo] = useState([]);
+
+  // console.log(authCtx.id);
+  // const submitFormHandler = (event) => {
+  //   event.preventDefault();
+  //   const enteredResident = residentRef.current.value;
+  //   const enteredLastName = lastNameRef.current.value;
+  //   const enteredDate = dateRef.current.value;
+  //   const enteredNotes = notesRef.current.value;
+  // };
+
+  function fetchCaseloadHandler(id) {
+    fetch(`http://localhost:3001/api/get/counselor-residents/${id}`, {
+      headers: {
+        "Content-type": "applications/json",
+      },
+      method: "GET",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setInfo(data);
+        console.log(info);
+        console.log(data);
+      });
+  }
+
+  useEffect(() => {
+    setAuth(authCtx.id);
+    fetchCaseloadHandler(auth);
+  }, [setAuth]);
+
   return (
     <>
       <div className="max-w-5xl mx-auto bg-white p-12 rounded-md shadow-sm m-6">
@@ -24,44 +65,51 @@ const AddNote = () => {
                     First name of Resident
                   </label>
                   <div className="mt-1">
-                    <input
-                      type="text"
-                      name="first_name"
-                      id="first_name"
-                      autoComplete="given-name"
+                    <select
                       className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                    />
+                      ref={residentRef}
+                    >
+                      {info.map((resident) => (
+                        <option key={resident.id}>
+                          {resident.resident_firstName +
+                            " " +
+                            resident.resident_lastName}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                 </div>
-                <div className="sm:col-span-3">
+                <div className="sm:col-span-2">
                   <label
-                    htmlFor="last_name"
+                    htmlFor="date"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Last name of Resident
+                    Date
                   </label>
                   <div className="mt-1">
                     <input
-                      type="text"
-                      name="last_name"
-                      id="last_name"
-                      autoComplete="family-name"
+                      ref={dateRef}
+                      type="date"
+                      name="date"
+                      id="date"
                       className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
-                </div>
-
-                <div>
-                  <h2 className="text-xl leading-6 font-medium text-gray-900">
-                    Notes
-                  </h2>
-                  <p className="mt-1 text-sm text-gray-500">
-                    Provide the notes you want to add.
-                  </p>
                 </div>
               </div>
             </div>
           </div>
+          <div className="mt-6">
+            <h2 className="text-xl leading-6 font-medium text-gray-900 pt-6">
+              Notes
+            </h2>
+          </div>
+          <textarea
+            ref={notesRef}
+            className="shadow-sm rounded-md mt-1 text-md text-gray-900 w-full h-60"
+          >
+            Provide the notes you want to add.
+          </textarea>
           <div className="pt-5">
             <div className="flex justify-end">
               <button
