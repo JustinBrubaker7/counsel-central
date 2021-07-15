@@ -59,6 +59,7 @@ const NewCounsleor = () => {
                     })
                 }
             }).then((data) => {
+                console.log(data)
                 const name = data.verify.name
                 const email = data.verify.email
                 const centerId = data.verify.center_id
@@ -80,14 +81,14 @@ const NewCounsleor = () => {
 
 
 
-    const submitFormHandler = (event, token) => {
+    const submitFormHandler = async (event, token) => {
         event.preventDefault();
 
         const enteredPassword = passowrdRef.current.value;
         const enteredPasswordConfirm = passowrdConfirmRef.current.value;
 
 
-        fetch('http://localhost:3001/api/log/signup', {
+        await fetch('http://localhost:3001/api/log/signup', {
             method: 'POST',
             body: JSON.stringify({
                 name: name,
@@ -115,7 +116,7 @@ const NewCounsleor = () => {
             console.log(data)
             //const experationTime = new Date(new Date().getTime() + (+data.expiresIn * 1000))
             history.replace('/')
-            authCtx.login(token)
+            authCtx.login(getTokenIdFromUrl())
 
         })
 

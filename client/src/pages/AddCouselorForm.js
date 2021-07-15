@@ -20,7 +20,7 @@ const AddCouselorForm = () => {
       method: 'POST',
       body: JSON.stringify({
         email: enteredEmail,
-        center_id: authCtx.centerId,
+        center_id: centerId,
         name: enteredName
 
 
