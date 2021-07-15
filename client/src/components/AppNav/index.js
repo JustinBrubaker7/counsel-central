@@ -25,6 +25,8 @@ import AddResidentForm from '../../pages/AddResidentForm';
 import Counselor from '../../pages/Counselors';
 import Logout from '../Logout/Logout'
 import ResidentProfile from '../../pages/ResidentProfile'
+import NewCounsleor from '../../pages/NewCounselor';
+
 import AuthContext from '../../context/auth-context';
 
 
@@ -365,11 +367,12 @@ export default function AppNav() {
                   <Route exact path="/logout">
                     <Logout />
                   </Route>
+
                   <Route path="*" >
                     <h1 className="text-5xl text-red-500 m-12">404 Page not found</h1>
                   </Route>
 
-                  </Switch>
+                </Switch>
                 {/* /End replace */}
               </div>
             </div>

@@ -12,15 +12,15 @@ const AddCouselorForm = () => {
     event.preventDefault();
 
     const enteredEmail = emailValueRef.current.value;
-    const enteredName = emailValueRef.current.value;
-
+    const enteredName = nameValueRef.current.value;
+    const centerId = authCtx.center_id
     //validation
 
     fetch('http://localhost:3001/api/log/newuser', {
       method: 'POST',
       body: JSON.stringify({
         email: enteredEmail,
-        center_id: authCtx.center_id,
+        center_id: centerId,
         name: enteredName
 
 

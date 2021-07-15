@@ -11,6 +11,7 @@ router.post("/checktoken", cors(), async (req, res) => {
   try {
     const verify = jwt.verify(req.body.token, "bob");
 
+    console.log(verify)
     if (verify) {
       res.send({ verify });
     }
