@@ -28,6 +28,7 @@ const AddNote = () => {
       method: "GET",
     })
       .then((res) => {
+        console.log(res);
         return res.json();
       })
       .then((data) => {
@@ -40,7 +41,7 @@ const AddNote = () => {
   useEffect(() => {
     setAuth(authCtx.id);
     fetchCaseloadHandler(auth);
-  }, [setAuth]);
+  }, []);
 
   return (
     <>
