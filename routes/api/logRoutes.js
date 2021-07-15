@@ -71,9 +71,7 @@ router.post("/login", cors(), async (req, res) => {
         center_id: theUser.id,
         isAdmin: isAdmin,
       };
-    }
-
-    if (isAdmin === false) {
+    } else if (isAdmin === false) {
       payload = {
         id: theUser.id,
         center_id: theUser.center_id,
