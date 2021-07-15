@@ -11,18 +11,18 @@ selfEvent.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    event_name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    time: {
+    start: {
       type: DataTypes.STRING,
     },
-    date: {
+    end: {
       type: Date,
       allowNull: false,
     },
-    center_id: {
+    counselor_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "counselor",

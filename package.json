@@ -30,6 +30,7 @@
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.2.5",
     "nodemailer": "^6.6.2",
+    "react-big-calendar": "^0.33.5",
     "sequelize": "^6.6.4"
   }
 }
