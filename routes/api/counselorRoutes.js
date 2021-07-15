@@ -51,7 +51,26 @@ router.put("/update", async (req, res) => {
       {
         center_id: req.body.center_id,
         name: req.body.name,
-        email: req.body.email,
+      }
+    ).then((data) => {
+      res.send(data);
+      res.json(data);
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// Updates a couselor /api/counselor/updatepass/(counselor ID)
+router.put("/updatepass", async (req, res) => {
+  try {
+    await Counselor.update(
+      {
+        where: {
+          id: req.body.id,
+        },
+      },
+      {
         password: req.body.password,
       }
     ).then((data) => {
