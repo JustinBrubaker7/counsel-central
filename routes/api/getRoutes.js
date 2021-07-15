@@ -129,7 +129,7 @@ router.get("/center/:id", async (req, res) => {
 router.get("/counselor-notes/:id", async (req, res) => {
   getAll = await Counselor.findAll({
     where: {
-      center_id: req.params.id,
+      id: req.params.id,
     },
     include: [Note],
   });
@@ -144,7 +144,7 @@ router.get("/counselor-notes/:id", async (req, res) => {
 router.get("/resident-notes/:id", async (req, res) => {
   getAll = await Note.findAll({
     where: {
-      center_id: req.params.id,
+      id: req.params.id,
     },
     include: [Resident],
   });

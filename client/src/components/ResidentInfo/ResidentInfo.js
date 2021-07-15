@@ -1,28 +1,58 @@
 import React from 'react'
+
 import Title from '../Title/Title'
+import Divider from '../Divider/Divider'
+import SessionList from '../SessionList/SessionList'
+import Timeline from '../Timeline/Timeline'
+
+
 
 const ResidentInfo = ({ resident }) => {
     return (
         <>
-            <Title title={resident.resident_firstName + " " + resident.resident_lastName} />
-            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt='user' className="h-56 w-auto"></img>
-            <div className="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200 float-right">
+            <div>
+                <Title title={resident.resident_firstName + " " + resident.resident_lastName} />
+            </div>
+            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt='user' className="h-56 w-auto float-left mr-12 rounded shadow-sm" />
+            <div className="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200 ">
                 <div className="px-4 py-5 sm:px-6">
-                    <h2 className="text-xl">Info</h2>
+                    <h2 className="text-xl font-bold">Info</h2>
                 </div>
                 <div className="px-4 py-5 sm:p-6">
-                    <div>
+                    <p>
                         {"Age: " + resident.age}
-                    </div>
-                    <div>
+                    </p>
+                    <p>
                         {"DOB: " + resident.DOB}
-                    </div>
-                    <div>
-                        {"Yeasr Using: " + resident.years_used}
-                    </div>
+                    </p>
+                    <p>
+                        {"Years Using: " + resident.years_used}
+                    </p>
+                    <p>
+                        {"Gender: " + resident.gender}
+                    </p>
+                    <p>
+                        {"Drug of Choice: " + resident.drug_choice}
+                    </p>
 
 
                 </div>
+            </div>
+            <Divider className="mt-12" name="Timeline" />
+
+
+            <div className="grid grid-cols-2 gap-2">
+                <div className="relative w-96 h-96 p-12 border p-12 bg-white rounded-md shadow-sm mt-4">
+                    <div className="absolute inset-y-2 left-1 m-2">
+                        <h2 className="text-xl font-bold">Session Notes</h2>
+                        <SessionList />
+                    </div>
+                </div>
+
+                <div className="mx-auto px-4 p-12 sm:px-6 lg:px-8 border bg-white rounded-md shadow-sm mt-4">
+                    <Timeline />
+                </div>
+
             </div>
         </>
     )

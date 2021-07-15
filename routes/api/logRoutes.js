@@ -21,6 +21,8 @@ router.post("/login", cors(), async (req, res) => {
       },
     });
 
+    console.log(centerCheck);
+
     if (centerCheck === null) {
       const userCheck = await Counselor.findOne({
         where: {
@@ -41,11 +43,13 @@ router.post("/login", cors(), async (req, res) => {
         res.status(400).json({ message: "Wrong email or password, try again" });
         return;
       }
-
+      console.log("Youre logged in as a pleb");
       isAdmin = false;
       theUser = userCheck;
     } else {
-      const adminPassword = await userCheck.checkPassword(req.body.password);
+      const adminPassword = await centerCheck.checkCenterPassword(
+        req.body.password
+      );
 
       if (!adminPassword) {
         res.status(400).json({ message: "Wrong email or password, try again" });
@@ -57,11 +61,8 @@ router.post("/login", cors(), async (req, res) => {
       theUser = centerCheck;
 
       console.log("Youre logged in as a lord of winterfell");
-      //res.json({ user: userCheck, message: "You are logged in!" });
-      console.log("Youre logged in as a pleb");
     }
 
-    //res.json({ user: userCheck, message: "You are logged in!" });
     let payload;
 
     if (isAdmin === true) {

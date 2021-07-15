@@ -1,6 +1,7 @@
-/* This example requires Tailwind CSS v2.0+ */
-import { ArrowSmDownIcon, ArrowSmUpIcon } from '@heroicons/react/solid'
+import React, { useContext } from 'react';
 import { CheckCircleIcon, UsersIcon, ChartBarIcon } from '@heroicons/react/outline'
+import AuthContext from '../../context/auth-context'
+
 
 const stats = [
     { id: 1, name: 'Available Beds', stat: '12', icon: CheckCircleIcon, change: '5', changeType: 'increase' },
@@ -12,7 +13,13 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default function Stats() {
+    const authCtx = useContext(AuthContext)
+
+    //need to make calls to the backend getting total beds minus residents.length
+    //call to get residetns.length
+    //call to get notes.length
+
     return (
         <div>
             <h3 className="text-lg leading-6 font-medium text-gray-900">Your Center overview</h3>
@@ -37,14 +44,6 @@ export default function Example() {
                                     'ml-2 flex items-baseline text-sm font-semibold'
                                 )}
                             >
-                                {item.changeType === 'increase' ? (
-                                    <ArrowSmUpIcon className="self-center flex-shrink-0 h-5 w-5 text-green-500" aria-hidden="true" />
-                                ) : (
-                                    <ArrowSmDownIcon className="self-center flex-shrink-0 h-5 w-5 text-red-500" aria-hidden="true" />
-                                )}
-
-                                <span className="sr-only">{item.changeType === 'increase' ? 'Increased' : 'Decreased'} by</span>
-                                {item.change}
                             </p>
                         </dd>
                     </div>

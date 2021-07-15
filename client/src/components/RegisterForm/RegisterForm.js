@@ -1,18 +1,96 @@
-import react from "react";
+import React, { useRef, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import AuthContext from "../../context/auth-context"
 
 import {
-  BrowserRouter as Router,
-  Switch,
   Route,
-  Link,
   Redirect,
 } from "react-router-dom";
 
 export default function RegisterForm() {
+  let history = useHistory();
+  const authCtx = useContext(AuthContext)
+  const centerNameRef = useRef()
+  const nameRef = useRef()
+  //const lastNameRef = useRef()
+  const emailRef = useRef()
+  const phoneRef = useRef()
+  //const countryRef = useRef()
+  const addressRef = useRef()
+  const cityRef = useRef()
+  const stateRef = useRef()
+  const zipRef = useRef()
+  const numberOfResidentsRef = useRef()
+  const numberOfBedsRef = useRef()
+  const numberOfCounselorsRef = useRef()
+  const passwordRef = useRef()
+  const password2Ref = useRef()
+
+  const submitFormHandler = (event) => {
+    event.preventDefault();
+
+    const enteredCenterName = centerNameRef.current.value;
+    const enteredName = nameRef.current.value;
+    const enteredEmail = emailRef.current.value;
+    const enteredPhone = phoneRef.current.value;
+    const enteredAdress = addressRef.current.value;
+    const enteredCity = cityRef.current.value;
+    const enteredState = stateRef.current.value;
+    const enteredZip = zipRef.current.value;
+    const enteredNumOfResidents = numberOfResidentsRef.current.value;
+    const enteredNumOfBeds = numberOfBedsRef.current.value;
+    const enteredNumOfCounselors = numberOfCounselorsRef.current.value;
+    const enteredPassword = passwordRef.current.value;
+
+
+
+    fetch('http://localhost:3001/api/center', {
+      method: "POST",
+      body: JSON.stringify({
+        name: enteredCenterName,
+        address: enteredAdress,
+        city: enteredCity,
+        state: enteredState,
+        zipCode: enteredZip,
+        residentCount: enteredNumOfResidents,
+        counselorCount: enteredNumOfCounselors,
+        bedCount: enteredNumOfBeds,
+        director_name: enteredName,
+        email: enteredEmail,
+        phone: enteredPhone,
+        password: enteredPassword
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+
+    }).then(res => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        res.json().then(data => {
+          let errorMessage = 'Registration Failed!'
+          console.log(data)
+          alert(errorMessage)
+          throw new Error(errorMessage)
+        })
+      }
+    }).then((data) => {
+      console.log(data)
+      history.replace('/')
+      authCtx.login(data.token)
+
+    })
+
+  }
+
+
+
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-gray-50">
       <div className="max-w-5xl mx-auto bg-white p-12 rounded-md shadow-sm m-6">
-        <form className="space-y-8 divide-y divide-gray-200" method="POST">
+        <form className="space-y-8 divide-y divide-gray-200" onSubmit={submitFormHandler}>
           <div className="space-y-8 divide-y divide-gray-200">
             <div>
               <div>
@@ -35,6 +113,7 @@ export default function RegisterForm() {
                   </label>
                   <div className="mt-1 flex rounded-md shadow-sm">
                     <input
+                      ref={centerNameRef}
                       type="text"
                       name="center-name"
                       id="center-name"
@@ -55,6 +134,7 @@ export default function RegisterForm() {
                   </label>
                   <div className="mt-1">
                     <input
+                      ref={nameRef}
                       type="text"
                       name="first_name"
                       id="first_name"
@@ -73,6 +153,7 @@ export default function RegisterForm() {
                   </label>
                   <div className="mt-1">
                     <input
+                      //ref={lastNameRef}
                       type="text"
                       name="last_name"
                       id="last_name"
@@ -91,6 +172,7 @@ export default function RegisterForm() {
                   </label>
                   <div className="mt-1">
                     <input
+                      ref={emailRef}
                       id="email"
                       name="email"
                       type="email"
@@ -108,6 +190,7 @@ export default function RegisterForm() {
                   </label>
                   <div className="mt-1">
                     <input
+                      ref={phoneRef}
                       id="phone"
                       name="phone"
                       type="tel"
@@ -126,6 +209,7 @@ export default function RegisterForm() {
                   </label>
                   <div className="mt-1">
                     <select
+                      //ref={countryRef}
                       id="country"
                       name="country"
                       autoComplete="country"
@@ -147,6 +231,7 @@ export default function RegisterForm() {
                   </label>
                   <div className="mt-1">
                     <input
+                      ref={addressRef}
                       type="text"
                       name="street_address"
                       id="street_address"
@@ -165,6 +250,7 @@ export default function RegisterForm() {
                   </label>
                   <div className="mt-1">
                     <input
+                      ref={cityRef}
                       type="text"
                       name="city"
                       id="city"
@@ -182,6 +268,7 @@ export default function RegisterForm() {
                   </label>
                   <div className="mt-1">
                     <input
+                      ref={stateRef}
                       type="text"
                       name="state"
                       id="state"
@@ -199,6 +286,7 @@ export default function RegisterForm() {
                   </label>
                   <div className="mt-1">
                     <input
+                      ref={zipRef}
                       type="text"
                       name="zip"
                       id="zip"
@@ -232,6 +320,7 @@ export default function RegisterForm() {
                   </label>
                   <div className="mt-1">
                     <input
+                      ref={numberOfResidentsRef}
                       type="number"
                       name="current-residents"
                       id="current-residents"
@@ -249,6 +338,7 @@ export default function RegisterForm() {
                   </label>
                   <div className="mt-1">
                     <input
+                      ref={numberOfBedsRef}
                       type="number"
                       name="beds"
                       id="beds"
@@ -266,6 +356,7 @@ export default function RegisterForm() {
                   </label>
                   <div className="mt-1">
                     <input
+                      ref={numberOfCounselorsRef}
                       type="number"
                       name="number-couselors"
                       id="number-couselors"
@@ -286,6 +377,7 @@ export default function RegisterForm() {
                   </label>
                   <div className="mt-1">
                     <input
+                      ref={passwordRef}
                       type="password"
                       name="password"
                       id="password"
@@ -303,6 +395,7 @@ export default function RegisterForm() {
                   </label>
                   <div className="mt-1">
                     <input
+                      ref={password2Ref}
                       type="password"
                       name="password2"
                       id="password2"
@@ -407,7 +500,7 @@ export default function RegisterForm() {
                 Cancel
               </button>
               <button
-                onclick="redirect()"
+
                 type="submit"
                 className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-honolulu hover:bg-honolulu-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >

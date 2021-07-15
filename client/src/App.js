@@ -13,7 +13,9 @@ function App() {
 
   return (
     <>
-      <Router>{loggedIn ? <ExternalRoute></ExternalRoute> : <AppNav />}</Router>
+      <Router>
+        {!loggedIn ? <ExternalRoute></ExternalRoute> : <AppNav />}
+      </Router>
     </>
   );
 }
