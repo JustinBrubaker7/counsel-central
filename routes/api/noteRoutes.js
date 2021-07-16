@@ -19,6 +19,7 @@ router.post("/create", async (req, res) => {
       date: req.body.date
     }).then((data) => {
       res.json(data);
+
     });
   } catch (err) {
     console.log(err);
