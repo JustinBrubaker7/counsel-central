@@ -14,11 +14,12 @@ export default function Table() {
         const getData = await API.getResidents(id)
         const data = await getData.data
         setResidents(data)
+
     }
 
     useEffect(() => {
         fetchResidentHandler(authCtx.center_id)
-    }, [])
+    }, [authCtx])
 
 
 
@@ -70,7 +71,7 @@ export default function Table() {
                             </thead>
                             <tbody>
                                 {residents.map((resident) => (
-                                    <tr key={resident.email} className='bg-white'>
+                                    <tr key={resident.id} className='bg-white'>
 
                                         <td className="px-4 py-4 whitespace-nowrap text-md font-medium text-gray-900">{resident.resident_firstName + " " + resident.resident_lastName}</td>
                                         <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{resident.age}</td>

@@ -1,46 +1,27 @@
-import React, { useContext, useRef, useEffect, useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import API from '../utils/API'
+
+
 import AuthContext from "../context/auth-context";
 
-const AddNote = () => {
-  const authCtx = useContext(AuthContext);
-  const residentRef = useRef();
-  const lastNameRef = useRef();
-  const dateRef = useRef();
-  const notesRef = useRef();
+const Caseload = () => {
+  const authCtx = useContext(AuthContext)
 
-  const [auth, setAuth] = useState();
-  const [info, setInfo] = useState([]);
+  const [residents, setResidents] = useState([])
 
-  // console.log(authCtx.id);
-  // const submitFormHandler = (event) => {
-  //   event.preventDefault();
-  //   const enteredResident = residentRef.current.value;
-  //   const enteredLastName = lastNameRef.current.value;
-  //   const enteredDate = dateRef.current.value;
-  //   const enteredNotes = notesRef.current.value;
-  // };
-
-  function fetchCaseloadHandler(id) {
-    fetch(`http://localhost:3001/api/get/counselor-residents/${id}`, {
-      headers: {
-        "Content-type": "applications/json",
-      },
-      method: "GET",
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setInfo(data);
-        console.log(info);
-        console.log(data);
-      });
+  async function fetchResidentHandler(id) {
+    const getData = await API.getResidents(id)
+    const data = await getData.data
+    setResidents(data)
   }
 
   useEffect(() => {
-    setAuth(authCtx.id);
-    fetchCaseloadHandler(auth);
-  }, [setAuth]);
+    fetchResidentHandler(authCtx.center_id)
+  }, [authCtx])
+
+
+
+
 
   return (
     <>
@@ -50,7 +31,7 @@ const AddNote = () => {
             <div>
               <div>
                 <h2 className="text-xl leading-6 font-medium text-gray-900">
-                  Add a Note for Your Resident
+                  Add a Session for Your Resident
                 </h2>
                 <p className="mt-1 text-sm text-gray-500"></p>
               </div>
@@ -62,14 +43,14 @@ const AddNote = () => {
                     htmlFor="first_name"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    First name of Resident
+                    Select a Resident
                   </label>
                   <div className="mt-1">
                     <select
                       className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                      ref={residentRef}
+                    // ref={residentRef}
                     >
-                      {info.map((resident) => (
+                      {residents.map((resident) => (
                         <option key={resident.id}>
                           {resident.resident_firstName +
                             " " +
@@ -88,7 +69,7 @@ const AddNote = () => {
                   </label>
                   <div className="mt-1">
                     <input
-                      ref={dateRef}
+                      // ref={dateRef}
                       type="date"
                       name="date"
                       id="date"
@@ -105,7 +86,10 @@ const AddNote = () => {
             </h2>
           </div>
           <textarea
-            ref={notesRef}
+            //ref={notesRef}
+            type="text"
+            name="notes"
+            id="notes"
             className="shadow-sm rounded-md mt-1 text-md text-gray-900 w-full h-60"
           >
             Provide the notes you want to add.
@@ -132,4 +116,4 @@ const AddNote = () => {
   );
 };
 
-export default AddNote;
+export default Caseload;
