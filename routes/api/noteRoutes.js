@@ -34,7 +34,10 @@ router.post("/update", async (req, res) => {
       },
     },
     {
-      body: req.params.body,
+      body: req.body.body,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      date: req.body.date,
     }
   );
 });
