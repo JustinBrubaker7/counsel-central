@@ -1,12 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Title from '../components/Title/Title'
 import Stats from '../components/Stats/Stats'
+import API from '../utils/API'
+import AuthContext from '../context/auth-context'
 
 const Dashboard = () => {
+
+    const [residents, setResidents] = useState([])
+    const authCtx = useContext(AuthContext)
+
+    useEffect(() => {
+        fetchCaseloadHandler(authCtx.center_id)
+    }, [authCtx])
+
+
+    async function fetchCaseloadHandler(id) {
+        const response = await fetch(
+            `http://localhost:3001/api/get/center-residents/${id}`
+        );
+        const data = await response.json();
+        setResidents(data);
+    }
+
     return (
         <div>
             <Title title={"Dashboard"} />
-            <Stats />
+            <Stats residents={residents} />
         </div>
     )
 }

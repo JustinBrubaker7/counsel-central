@@ -19,6 +19,7 @@ export default {
   getResident: function (id) {
     return axios.get(`http://localhost:3001/api/get/counselor-residents/${id}`);
   },
+
   getResidents: function (id) {
     return axios.get(`http://localhost:3001/api/get/center-residents/${id}`);
   },

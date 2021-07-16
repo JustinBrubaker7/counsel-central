@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Center, Counselor, Resident } = require("../../models");
+const { Center, Counselor, Resident, Note } = require("../../models");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
@@ -11,11 +11,18 @@ const nodemailer = require("nodemailer");
 
 // Create a new note /api/note/create
 router.post("/create", async (req, res) => {
-  newNote = await Note.create({
-    counselor_id: req.body.counselor_id,
-    resident_id: req.body.resident_id,
-    body: req.params.body,
-  });
+  try {
+    newNote = await Note.create({
+      counselor_id: req.body.counselor_id,
+      resident_id: req.body.resident_id,
+      note: req.body.note,
+      date: req.body.date
+    }).then((data) => {
+      res.json(data);
+    });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // Create a new note /api/note/create

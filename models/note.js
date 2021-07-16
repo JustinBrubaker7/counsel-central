@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Note extends Model {}
+class Note extends Model { }
 
 Note.init(
   {
@@ -11,17 +11,11 @@ Note.init(
       primaryKey: true,
       autoIncrement: true,
     },
-
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    note: {
+      type: DataTypes.TEXT,
     },
-    body: {
-      type: DataTypes.STRING,
-    },
-    side_note: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    date: {
+      type: DataTypes.DATE,
     },
     counselor_id: {
       type: DataTypes.INTEGER,

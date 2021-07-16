@@ -49,7 +49,7 @@ export default function CaseloadCard({ residents }) {
                                     </div>
                                     <div className="-ml-px w-0 flex-1 flex">
                                         <a
-                                            href="/addnote"
+                                            href="/notes"
                                             className="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500"
                                         >
                                             <PlusIcon className="w-7 h-7 text-gray-400" aria-hidden="true" />

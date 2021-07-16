@@ -1,6 +1,25 @@
-import React from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
+import AuthContext from "../context/auth-context";
+import API from '../utils/API'
 
 const AddResidentForm = () => {
+
+  const authCtx = useContext(AuthContext)
+
+  const [counselors, setCounselors] = useState([])
+
+  async function fetchResidentHandler(id) {
+    const getData = await API.getCounselors(id)
+    const data = await getData.data
+    setCounselors(data)
+  }
+
+  useEffect(() => {
+    fetchResidentHandler(authCtx.center_id)
+  }, [authCtx])
+
+
+
   return (
     <>
       <div className="max-w-5xl mx-auto bg-white p-12 rounded-md shadow-sm m-6">
@@ -186,10 +205,11 @@ const AddResidentForm = () => {
                     className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                     defaultValue="Amanda Ringer"
                   >
-                    <option>Not Assigned</option>
-                    <option>Amanda Ringer</option>
-                    <option>Bob Heartlock</option>
-                    <option>Jeff Target</option>
+                    {counselors.map((counselor) => (
+                      <option key={counselor.id}>
+                        {counselor.name}
+                      </option>
+                    ))}
                   </select>
                 </div>
                 <div className="sm:col-span-2">

@@ -5,6 +5,7 @@ import LoginForm from '../../components/LoginForm/LoginForm';
 import Pricing from '../../components/Pricing/Pricing';
 import RegisterForm from '../../components/RegisterForm/RegisterForm';
 import FeatureSectionExternal from '../../components/FeatureSectionExternal/index';
+import ErrorPage from '../ErrorPage/ErrorPage';
 
 import { Switch, Route } from "react-router-dom";
 import NewCounsleor from '../../pages/NewCounselor';
@@ -47,7 +48,7 @@ function ExternalRoute() {
         </Route>
         <Route path="*" >
           <ExternalNav />
-          <h1 className="text-5xl text-red-500 m-12">404 Page not found</h1>
+          <ErrorPage />
         </Route>
       </Switch>
     </>
