@@ -10,7 +10,7 @@ const Caseload = () => {
 
   useEffect(() => {
     fetchCaseloadHandler(authCtx.id);
-  }, []);
+  }, [authCtx]);
 
   async function fetchCaseloadHandler(id) {
     const response = await fetch(
