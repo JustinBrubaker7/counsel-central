@@ -14,7 +14,7 @@ const Counselors = () => {
 
     useEffect(() => {
         fetchCounselorsHandler(authCtx.center_id)
-    }, [])
+    }, [authCtx])
 
     async function fetchCounselorsHandler(id) {
         const getData = await API.getCounselors(id)

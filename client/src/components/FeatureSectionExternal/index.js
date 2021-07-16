@@ -3,36 +3,36 @@ import { CheckIcon } from '@heroicons/react/outline'
 
 const features = [
   {
-    name: 'Invite team members',
-    description: 'Tempor tellus in aliquet eu et sit nulla tellus. Suspendisse est, molestie blandit quis ac. Lacus.',
+    name: 'Invite Team Members',
+    description: 'Add unlimited counselors and staff to your centers team.',
   },
   {
-    name: 'Notifications',
-    description: 'Ornare donec rhoncus vitae nisl velit, neque, mauris dictum duis. Nibh urna non parturient.',
+    name: 'Couseling Notes',
+    description: 'Easily view, edit, and add counseling notes for every session with your residents.',
   },
   {
-    name: 'List view',
-    description: 'Etiam cras augue ornare pretium sit malesuada morbi orci, venenatis. Dictum lacus.',
+    name: 'Caseload Management',
+    description: 'See an overview of resident to counselor assignments as well as house population log.',
   },
   {
-    name: 'Boards',
-    description: 'Interdum quam pulvinar turpis tortor, egestas quis diam amet, natoque. Mauris sagittis.',
+    name: 'Center Wide Event Calendar',
+    description: 'Quickly view all events held in your center by the week, month, or year.',
   },
   {
-    name: 'Keyboard shortcuts',
-    description: 'Ullamcorper in ipsum ac feugiat. Senectus at aliquam vulputate mollis nec. In at risus odio.',
+    name: 'Resident Progress Tracking',
+    description: 'Track admission, progress, growth, and graduation on each resident in your program.',
   },
   {
-    name: 'Reporting',
-    description: 'Magna a vel sagittis aliquam eu amet. Et lorem auctor quam nunc odio. Sed bibendum.',
+    name: 'Safe and Secure',
+    description: 'Feel confident that all information is secure.',
   },
   {
-    name: 'Calendars',
-    description: 'Sed mi, dapibus turpis orci posuere integer. A porta viverra posuere adipiscing turpis.',
+    name: 'Easy to Use',
+    description: 'Straight forward software, easy to navigate and learn quickly.',
   },
   {
-    name: 'Mobile app',
-    description: 'Quisque sapien nunc nisl eros. Facilisis sagittis maecenas id dignissim tristique proin sed.',
+    name: 'Interact with Colleagues',
+    description: 'Leave notes for your colleagues on their assigned caseload.',
   },
 ]
 
@@ -43,7 +43,7 @@ export default function FeatureSectionExternal() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-extrabold text-gray-900">All-in-one platform</h2>
           <p className="mt-4 text-lg text-gray-500">
-            Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla nec.
+            The perfect software for your center or program to manage, care for, and help.
           </p>
         </div>
         <dl className="mt-12 space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-4 lg:gap-x-8">
