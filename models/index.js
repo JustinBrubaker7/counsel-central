@@ -2,6 +2,8 @@ const Counselor = require("./counselor");
 const Center = require("./center");
 const Resident = require("./resident");
 const Note = require("./note");
+const SelfEvent = require("./selfEvent");
+const GroupEvent = require("./groupEvent");
 
 Center.hasMany(Counselor, {
   foreignKey: "center_id",
@@ -43,4 +45,21 @@ Resident.belongsTo(Center, {
   foreignKey: "center_id",
 });
 
-module.exports = { Counselor, Center, Resident, Note };
+// Event Relationships
+Counselor.hasMany(SelfEvent, {
+  foreignKey: "counselor_id",
+});
+
+Center.hasMany(GroupEvent, {
+  foreignKey: "center_id",
+});
+
+SelfEvent.belongsTo(Counselor, {
+  foreignKey: "counselor_id",
+});
+
+GroupEvent.belongsTo(Center, {
+  foreignKey: "center_id",
+});
+
+module.exports = { Counselor, Center, Resident, Note, SelfEvent, GroupEvent };

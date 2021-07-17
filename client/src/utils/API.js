@@ -53,4 +53,8 @@ export default {
   addNote: function () {
     return axios.get("api/note/create");
   },
+
+  getEvents: function (id) {
+    return axios.get(`api/date/get/${id}`);
+  },
 };
