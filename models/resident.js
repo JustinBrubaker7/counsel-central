@@ -61,7 +61,7 @@ Resident.init(
       allowNull: true,
     },
     disabled: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     disabled_explanation: {
@@ -105,11 +105,11 @@ Resident.init(
       allowNull: true,
     },
     sobriety_length: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     hasDetoxed: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     counselor_id: {

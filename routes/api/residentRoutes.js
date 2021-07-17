@@ -27,6 +27,7 @@ router.post("/create", async (req, res) => {
       disabled_explanation: req.body.disabled_explanation,
       emergencyContact_firstName: req.body.emergencyContact_firstName,
       emergencyContact_lastName: req.body.emergencyContact_lastName,
+      emergencyContact_phone: req.body.emergencyContact_phone,
       contactRelationship: req.body.contactRelationship,
       relationship_address: req.body.relationship_address,
       relationship_city: req.body.relationship_city,

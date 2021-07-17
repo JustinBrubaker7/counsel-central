@@ -75,7 +75,7 @@ const NoteNew = () => {
   return (
     <>
       <div className="max-w-5xl mx-auto bg-white p-12 rounded-md shadow-sm m-6">
-        {success && <SuccessModal className="mt-12" />}
+        {success && <SuccessModal title={"Successfully saved!"} subtitle={"The note was added and you can now view in resident profile."} className="mt-12" />}
         <form className="space-y-8 divide-y divide-gray-200" onSubmit={submitNoteHandler}>
           <div className="">
             <div>
