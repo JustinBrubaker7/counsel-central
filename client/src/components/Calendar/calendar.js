@@ -12,7 +12,7 @@ export default function MyCalendar(props) {
     <div className="App">
       <Calendar
         localizer={localizer}
-        events={myEventsList}
+        events={props.eventsList}
         defaultDate={new Date()}
         defaultView="month"
         style={{ height: 700 }}

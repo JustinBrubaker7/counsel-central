@@ -22,7 +22,7 @@ const Calendar = () => {
   return (
     <div>
       <Title title={"Calendar"} />
-      <MyCalendar />
+      <MyCalendar eventList={events} />
     </div>
   );
 };
