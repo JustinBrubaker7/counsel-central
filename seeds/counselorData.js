@@ -35,6 +35,13 @@ const counselorData = [
     password: "password1234",
     center_id: 2,
   },
+
+  {
+    name: "Daniel boi",
+    email: "thewron1@gmail.com",
+    password: "$2b$10$6cv0dX7keTlnx86B0flRSuweWWBAy941njA82XURMc0oceTohFR02",
+    center_id: 3,
+  },
 ];
 
 const seedCounselor = () => Counselor.bulkCreate(counselorData);
