@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "../context/auth-context";
 import API from "../utils/API";
-import TitleButtons from "../components/Title/Title";
+import TitleButtons from "../components/TitleButtons/TitleButtons";
 import MyCalendar from "../components/Calendar/calendar";
 
 const Calendar = () => {
