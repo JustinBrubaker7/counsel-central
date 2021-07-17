@@ -53,7 +53,7 @@ const NoteNew = () => {
         return res.json()
       } else {
         res.json().then(data => {
-          let errorMessage = 'signup faild!'
+          let errorMessage = 'note add faild!'
           console.log(data)
           alert(errorMessage)
           throw new Error(errorMessage)

@@ -3,9 +3,10 @@ import Title from '../components/Title/Title'
 import Stats from '../components/Stats/Stats'
 import API from '../utils/API'
 import AuthContext from '../context/auth-context'
+//import config from "../config/config"
 
 const Dashboard = () => {
-
+    //console.log(config.url)
     const [residents, setResidents] = useState([])
     const authCtx = useContext(AuthContext)
 

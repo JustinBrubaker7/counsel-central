@@ -89,6 +89,9 @@ const NewCounsleor = () => {
 
 
         await fetch('http://localhost:3001/api/log/signup', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
             method: 'POST',
             body: JSON.stringify({
                 name: name,
@@ -97,10 +100,7 @@ const NewCounsleor = () => {
                 center_id: centerId
 
 
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            })
         }).then(res => {
             if (res.ok) {
                 return res.json()
@@ -112,8 +112,8 @@ const NewCounsleor = () => {
                     throw new Error(errorMessage)
                 })
             }
-        }).then((data) => {
-            console.log(data)
+        }).then(() => {
+            //console.log(data)
             //const experationTime = new Date(new Date().getTime() + (+data.expiresIn * 1000))
             history.replace('/')
             authCtx.login(getTokenIdFromUrl())

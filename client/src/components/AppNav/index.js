@@ -400,7 +400,6 @@ export default function AppNav() {
                   <Route exact path="/logout">
                     <Logout />
                   </Route>
-
                   <Route path="*">
                     <Errorpage />
                   </Route>
