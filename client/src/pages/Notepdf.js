@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 });
 
 // Create Document Component
-const Notes = () => (
+const NotePdf = () => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={styles.section}>
@@ -28,6 +28,6 @@ const Notes = () => (
 );
 
 
-export default Notes;
+export default NotePdf;
 
 

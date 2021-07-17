@@ -19,8 +19,14 @@ export default {
   getResident: function (id) {
     return axios.get(`http://localhost:3001/api/get/counselor-residents/${id}`);
   },
+
   getResidents: function (id) {
     return axios.get(`http://localhost:3001/api/get/center-residents/${id}`);
+  },
+
+  //get notes by resident ID
+  getNotes: function (id) {
+    return axios.get(`http://localhost:3001/api/get/resident-notes/${id}`);
   },
 
   //getss all counselors at a given center by ID

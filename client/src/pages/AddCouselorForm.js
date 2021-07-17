@@ -1,5 +1,7 @@
-import React, { useRef, useContext } from 'react'
+import React, { useRef, useContext, useState } from 'react'
 import AuthContext from '../context/auth-context'
+
+import SuccessModal from '../components/SuccessModal/SuccessModal'
 
 const AddCouselorForm = () => {
   const authCtx = useContext(AuthContext)
@@ -7,10 +9,12 @@ const AddCouselorForm = () => {
   const nameValueRef = useRef()
   const emailValueRef = useRef()
 
+  const [success, setSuccess] = useState(false)
+
 
   const submitFormHandler = (event) => {
-    event.preventDefault();
 
+    setSuccess(false)
     const enteredEmail = emailValueRef.current.value;
     const enteredName = nameValueRef.current.value;
     const centerId = authCtx.center_id
@@ -22,14 +26,13 @@ const AddCouselorForm = () => {
         email: enteredEmail,
         center_id: centerId,
         name: enteredName
-
-
       }),
       headers: {
         'Content-Type': 'application/json'
       }
     }).then(res => {
       if (res.ok) {
+        setSuccess(true)
         return res.json()
       } else {
         res.json().then(data => {
@@ -39,19 +42,20 @@ const AddCouselorForm = () => {
           throw new Error(errorMessage)
         })
       }
-    }).then((data) => {
-      console.log(data)
-      //const experationTime = new Date(new Date().getTime() + (+data.expiresIn * 1000))
-      // history.replace('/')
-      // authCtx.login(data.token)
-
     })
+  }
 
+
+
+  const successtimer = () => {
+    setSuccess(true)
+    setTimeout(function () { setSuccess(false) }, 4000);
   }
 
   return (
     <>
       <div className="max-w-5xl mx-auto bg-white p-12 rounded-md shadow-sm m-6">
+        {success && <SuccessModal className="mt-12" />}
         <form className="space-y-8 divide-y divide-gray-200" onSubmit={submitFormHandler}>
           <div className="">
             <div>

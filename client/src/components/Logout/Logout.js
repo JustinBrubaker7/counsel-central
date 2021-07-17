@@ -9,9 +9,9 @@ const Logout = () => {
 
 
     useEffect(() => {
-        history.replace('/')
         authCtx.logout()
-        window.location.reload(true);
+        history.replace('/')
+        window.location.reload({ forcedReload: true });
     }, [])
 
     return (

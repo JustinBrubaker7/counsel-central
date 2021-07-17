@@ -127,11 +127,13 @@ router.post("/signup", async (req, res) => {
 });
 
 // Create counselors on /api/log/newuser
-router.post("/newuser", async (req, res) => {
+router.post("/newuser", cors(), async (req, res) => {
   try {
+    res.status(200).send("you are signed up");
     let email = req.body.email;
     let center_id = req.body.center_id;
     let name = req.body.name;
+
 
     const payload = {
       email: email,
@@ -158,7 +160,6 @@ router.post("/newuser", async (req, res) => {
         console.log("Email sent: " + info.response);
       }
     });
-    res.send("Comgramtulatins you got an email");
   } catch (err) {
     console.log(err);
   }
