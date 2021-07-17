@@ -4,7 +4,7 @@ import { Transition } from '@headlessui/react'
 import { CheckCircleIcon } from '@heroicons/react/outline'
 import { XIcon } from '@heroicons/react/solid'
 
-export default function Example() {
+export default function Example({ title, subtitle }) {
     const [show, setShow] = useState(true)
 
     return (
@@ -33,8 +33,8 @@ export default function Example() {
                                         <CheckCircleIcon className="h-6 w-6 text-green-400" aria-hidden="true" />
                                     </div>
                                     <div className="ml-3 w-0 flex-1 pt-0.5">
-                                        <p className="text-sm font-medium text-gray-900">Successfully saved!</p>
-                                        <p className="mt-1 text-sm text-gray-500">The note was added and you can now view in resident profile.</p>
+                                        <p className="text-sm font-medium text-gray-900">{title}</p>
+                                        <p className="mt-1 text-sm text-gray-500">{subtitle}</p>
                                     </div>
                                     <div className="ml-4 flex-shrink-0 flex">
                                         <button
