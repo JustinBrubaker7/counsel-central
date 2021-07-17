@@ -141,10 +141,10 @@ router.get("/counselor-notes/:id", async (req, res) => {
 });
 
 // Return all notes for a specific resident /api/get/resident-notes/(resident ID)
-router.get("/resident-notes/:id", async (req, res) => {
+router.get("/resident-notes/:id", cors(), async (req, res) => {
   getAll = await Note.findAll({
     where: {
-      id: req.params.id,
+      resident_id: req.params.id,
     },
     include: [Resident],
   });

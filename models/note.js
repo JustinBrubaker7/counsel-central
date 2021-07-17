@@ -13,9 +13,11 @@ Note.init(
     },
     note: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
     date: {
       type: DataTypes.DATE,
+      allowNull: false,
     },
     counselor_id: {
       type: DataTypes.INTEGER,

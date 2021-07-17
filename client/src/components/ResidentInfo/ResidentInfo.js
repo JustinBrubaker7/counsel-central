@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-import Title from '../Title/Title'
 import Divider from '../Divider/Divider'
 import SessionList from '../SessionList/SessionList'
 import Timeline from '../Timeline/Timeline'
 import TitleButtons from '../TitleButtons/TitleButtons'
+import API from '../../utils/API'
+
+//route to get a residents 
+//pass it down to the list component
+// loop through and show date and a preview of the note
 
 
 
-const ResidentInfo = ({ resident }) => {
+const ResidentInfo = ({ resident, notes }) => {
+
+
+    console.log(notes)
     return (
         <>
             <div>
@@ -51,7 +58,7 @@ const ResidentInfo = ({ resident }) => {
                 </div> */}
 
                 <div className="my-auto px-4 p-12 sm:px-6 lg:px-8 border bg-white rounded-md shadow-sm mt-4">
-                    <SessionList />
+                    <SessionList notes={notes} />
                 </div>
                 <div className="mx-auto my-auto px-4 p-12 sm:px-6 lg:px-8 border bg-white rounded-md shadow-sm mt-4">
                     <Timeline />
