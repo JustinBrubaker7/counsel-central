@@ -47,6 +47,8 @@ export default function LoginForm() {
       history.replace('/')
       authCtx.login(data.token)
 
+    }).catch(err => {
+      console.log(err)
     })
 
   }

@@ -1,17 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-import Title from '../Title/Title'
 import Divider from '../Divider/Divider'
 import SessionList from '../SessionList/SessionList'
 import Timeline from '../Timeline/Timeline'
+import TitleButtons from '../TitleButtons/TitleButtons'
+import API from '../../utils/API'
+
+//route to get a residents 
+//pass it down to the list component
+// loop through and show date and a preview of the note
 
 
 
-const ResidentInfo = ({ resident }) => {
+const ResidentInfo = ({ resident, notes }) => {
+
+
+    console.log(notes)
     return (
         <>
             <div>
-                <Title title={resident.resident_firstName + " " + resident.resident_lastName} />
+                <TitleButtons title={resident.resident_firstName + " " + resident.resident_lastName} />
             </div>
             <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt='user' className="h-56 w-auto float-left mr-12 rounded shadow-sm" />
             <div className="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200 ">
@@ -42,14 +50,17 @@ const ResidentInfo = ({ resident }) => {
 
 
             <div className="grid grid-cols-2 gap-2">
-                <div className="relative w-96 h-96 p-12 border p-12 bg-white rounded-md shadow-sm mt-4">
+                {/* <div className="relative w-96 h-96 p-12 border p-12 bg-white rounded-md shadow-sm mt-4">
                     <div className="absolute inset-y-2 left-1 m-2">
                         <h2 className="text-xl font-bold">Session Notes</h2>
                         <SessionList />
                     </div>
-                </div>
+                </div> */}
 
-                <div className="mx-auto px-4 p-12 sm:px-6 lg:px-8 border bg-white rounded-md shadow-sm mt-4">
+                <div className="my-auto px-4 p-12 sm:px-6 lg:px-8 border bg-white rounded-md shadow-sm mt-4">
+                    <SessionList notes={notes} />
+                </div>
+                <div className="mx-auto my-auto px-4 p-12 sm:px-6 lg:px-8 border bg-white rounded-md shadow-sm mt-4">
                     <Timeline />
                 </div>
 

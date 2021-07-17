@@ -11,6 +11,8 @@ const ResidentProfile = () => {
     const [resident, setResident] = useState({})
     const [isLoading, setIsLoading] = useState(false)
 
+    const [notes, setNotes] = useState([])
+
     const getResidentIdFromUrl = () => {
         const pathName = window.location.pathname
         const trimPath = pathName.split('/', 10)
@@ -20,22 +22,26 @@ const ResidentProfile = () => {
 
     async function fetchResident(id) {
         setIsLoading(true)
-        const residentId = getResidentIdFromUrl()
-        const response = await API.getSingleResident(residentId)
-        //console.log(response.data[0])
-        //const data = await response.json()
+        const response = await API.getSingleResident(id)
         setResident(response.data[0])
         setIsLoading(false)
     }
 
+    async function fetchNotes(id) {
+        const response = await API.getNotes(id)
+        setNotes(response.data)
+    }
+
 
     useEffect(() => {
-        fetchResident()
+        fetchNotes(getResidentIdFromUrl())
+        fetchResident(getResidentIdFromUrl())
     }, [])
+
 
     return (
         <div>
-            {isLoading ? <h1 className="mt-20">Loading....</h1> : <ResidentInfo resident={resident} />}
+            {isLoading ? <h1 className="mt-20">Loading....</h1> : <ResidentInfo resident={resident} notes={notes} />}
         </div>
     )
 }

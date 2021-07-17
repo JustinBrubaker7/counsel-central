@@ -12,18 +12,17 @@ const nodemailer = require("nodemailer");
 // Create a new note /api/note/create
 router.post("/create", async (req, res) => {
   try {
-    const newNote = await Note.create({
+    newNote = await Note.create({
       counselor_id: req.body.counselor_id,
       resident_id: req.body.resident_id,
-      body: req.body.body,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      date: req.body.date,
-    });
+      note: req.body.note,
+      date: req.body.date
+    }).then((data) => {
+      res.json(data);
 
-    res.send(newNote);
+    });
   } catch (err) {
-    res.send(err);
+    console.log(err);
   }
 });
 
