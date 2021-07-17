@@ -24,9 +24,12 @@ router.get("/get/:id/:centerID", cors(), async (req, res) => {
     },
   });
 
-  const Events = getAll.map((getInfo) => getInfo.get({ plain: true }));
+  const groupEvents = getAll.map((getInfo) => getInfo.get({ plain: true }));
+  const selfEvents = getAll.map((getInfo) => getInfo.get({ plain: true }));
 
-  res.send(Events);
+  const allEvents = groupEvents.concat(selfEvents);
+
+  res.send(allEvents);
   console.log(getAll);
   console.log("Were Wrokin");
 });
