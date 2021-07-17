@@ -55,6 +55,6 @@ export default {
   },
 
   getEvents: function (id) {
-    return axios.get(`api/date/get/${id}`);
+    return axios.get(`http://localhost:3001/api/date/get/${id}`);
   },
 };
