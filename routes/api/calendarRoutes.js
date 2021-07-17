@@ -30,6 +30,7 @@ router.get("/get/:id/:centerID", cors(), async (req, res) => {
   const allEvents = groupEvents.concat(selfEvents);
 
   res.send(allEvents);
+  console.log(allEvents);
   console.log(getAll);
   console.log("Were Wrokin");
 });

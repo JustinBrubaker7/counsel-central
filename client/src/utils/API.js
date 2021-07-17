@@ -60,7 +60,7 @@ export default {
     return axios.get("api/note/create");
   },
 
-  getEvents: function (id) {
-    return axios.get(`http://localhost:3001/api/date/get/${id}`);
+  getEvents: function (id, centerID) {
+    return axios.get(`http://localhost:3001/api/date/get/${id}/${centerID}`);
   },
 };
