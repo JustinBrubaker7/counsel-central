@@ -13,6 +13,7 @@ export default function Table() {
     async function fetchResidentHandler(id) {
         const getData = await API.getResidents(id)
         const data = await getData.data
+        console.log(data)
         setResidents(data)
 
     }
@@ -76,7 +77,7 @@ export default function Table() {
                                         <td className="px-4 py-4 whitespace-nowrap text-md font-medium text-gray-900">{resident.resident_firstName + " " + resident.resident_lastName}</td>
                                         <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{resident.age}</td>
                                         <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{resident.gender}</td>
-                                        <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{resident.counselor.name}</td>
+                                        <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{resident.counselor.name ? resident.counselor.name : "no counselor"}</td>
                                         <td className="px-4 py-4 whitespace-nowrap text-md text-gray-500">{Moment(resident.createdAt, "YYYY-MM-DD").fromNow()}</td>
                                         <td className="px-4 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <a href="#" className="text-prussian hover:text-prussian">

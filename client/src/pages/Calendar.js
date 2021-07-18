@@ -21,7 +21,7 @@ const Calendar = () => {
 
   return (
     <div>
-      <TitleButtons title={"Calendar"} />
+      <TitleButtons title={"Calendar"} button2Name={"Add New Event"} button2Link={"/addevent"} />
       <MyCalendar eventList={events} />
     </div>
   );
