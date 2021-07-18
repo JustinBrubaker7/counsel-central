@@ -19,7 +19,7 @@ const ResidentInfo = ({ resident, notes }) => {
     return (
         <>
             <div>
-                <TitleButtons title={resident.resident_firstName + " " + resident.resident_lastName} />
+                <TitleButtons title={resident.resident_firstName + " " + resident.resident_lastName} button1Name={"Reassign Resident"} button2Name={"Add Note"} button2Link={"/notes"} />
             </div>
             <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt='user' className="h-56 w-auto float-left mr-12 rounded shadow-sm" />
             <div className="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200 ">

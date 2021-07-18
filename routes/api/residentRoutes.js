@@ -10,8 +10,8 @@ router.post("/create", async (req, res) => {
   try {
     await Resident.create({
       // Added the center key which needs to be passed through the request, along with the rest of the information
-      center_id: req.body.centerID,
-      counselor_id: req.body.counselorID,
+      center_id: req.body.center_id,
+      counselor_id: req.body.counselor_id,
       resident_firstName: req.body.resident_firstName,
       resident_lastName: req.body.resident_lastName,
       age: req.body.age,
