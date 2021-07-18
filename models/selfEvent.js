@@ -19,8 +19,7 @@ selfEvent.init(
       type: DataTypes.STRING,
     },
     end: {
-      type: Date,
-      allowNull: false,
+      type: DataTypes.STRING,
     },
     counselor_id: {
       type: DataTypes.INTEGER,

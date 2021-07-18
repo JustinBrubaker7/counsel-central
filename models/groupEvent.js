@@ -19,8 +19,7 @@ groupEvent.init(
       type: DataTypes.STRING,
     },
     end: {
-      type: Date,
-      allowNull: false,
+      type: DataTypes.STRING,
     },
     center_id: {
       type: DataTypes.INTEGER,
