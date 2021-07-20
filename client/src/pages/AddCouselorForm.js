@@ -55,7 +55,7 @@ const AddCouselorForm = () => {
   return (
     <>
       <div className="max-w-5xl mx-auto bg-white p-12 rounded-md shadow-sm m-6">
-        {success && <SuccessModal className="mt-12" />}
+        {success && <SuccessModal className="mt-12" title={"Conselor Added"} subtitle={"The Counselor you invited will recieve an email to join shortly"} />}
         <form className="space-y-8 divide-y divide-gray-200" onSubmit={submitFormHandler}>
           <div className="">
             <div>
