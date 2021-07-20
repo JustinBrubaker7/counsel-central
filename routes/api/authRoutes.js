@@ -21,7 +21,7 @@ router.post("/checktoken", cors(), async (req, res) => {
 });
 
 // Check to see if the token sent is correct /api/auth/newpass
-router.post("/newpass", cors() async (req, res) => {
+router.post("/newpass", cors(), async (req, res) => {
   try {
     let email = req.body.email;
 
