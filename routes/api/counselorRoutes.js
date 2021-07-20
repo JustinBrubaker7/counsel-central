@@ -2,11 +2,12 @@ const router = require("express").Router();
 const { Center, Counselor, Resident } = require("../../models");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
+const cors = require("cors")
 
 // Routes all defined on /api/counselor
 
 // Creates a new counselor /api/counselor/create
-router.post("/create", async (req, res) => {
+router.post("/create", cors(), async (req, res) => {
   try {
     const newCounselor = await Counselor.create({
       // Added the center key which needs to be passed through the request, along with the rest of the information
@@ -24,7 +25,7 @@ router.post("/create", async (req, res) => {
 });
 
 // Removes a counselor /api/counselor/remove
-router.delete("/remove", async (req, res) => {
+router.delete("/remove", cors(), async (req, res) => {
   try {
     await Counselor.destroy({
       where: {
@@ -62,7 +63,7 @@ router.put("/update", async (req, res) => {
 });
 
 // Updates a couselor /api/counselor/updatepass/(counselor ID)
-router.put("/updatepass", async (req, res) => {
+router.put("/updatepass", cors(), async (req, res) => {
   try {
     await Counselor.update(
       {

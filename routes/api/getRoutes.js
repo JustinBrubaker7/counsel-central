@@ -26,7 +26,7 @@ router.get("/resident", cors(), async (req, res) => {
 });
 
 // Return a specific resident data /api/get/resident/(resident ID)
-router.get("/resident/:id", async (req, res) => {
+router.get("/resident/:id", cors(), async (req, res) => {
   getAll = await Resident.findAll({
     where: {
       id: req.params.id,
@@ -41,7 +41,7 @@ router.get("/resident/:id", async (req, res) => {
 });
 
 // Return a specific residents by counselor /api/get/counselor-residents/(counselor ID)
-router.get("/counselor-residents/:id", async (req, res) => {
+router.get("/counselor-residents/:id", cors(), async (req, res) => {
   getAll = await Resident.findAll({
     where: {
       counselor_id: req.params.id,
@@ -55,7 +55,7 @@ router.get("/counselor-residents/:id", async (req, res) => {
 });
 
 // Return a specific residents by center /api/get/center-residents/(center ID)
-router.get("/center-residents/:id", async (req, res) => {
+router.get("/center-residents/:id", cors(), async (req, res) => {
   getAll = await Resident.findAll({
     where: {
       center_id: req.params.id,
@@ -70,7 +70,7 @@ router.get("/center-residents/:id", async (req, res) => {
 });
 
 // Return all counselors and residents of Conselor /api/get/counselor
-router.get("/counselor", async (req, res) => {
+router.get("/counselor", cors(), async (req, res) => {
   const getAll = await Counselor.findAll({
     include: [Center, Resident],
   });
@@ -82,7 +82,7 @@ router.get("/counselor", async (req, res) => {
 });
 
 // Return a specific center data api/get/counselor/(counselor ID)
-router.get("/counselor/:id", async (req, res) => {
+router.get("/counselor/:id", cors(), async (req, res) => {
   getAll = await Counselor.findAll({
     where: {
       id: req.params.id,
@@ -97,7 +97,7 @@ router.get("/counselor/:id", async (req, res) => {
 });
 
 // Return a specific counselors by center /api/get/center-counselors/(center ID)
-router.get("/center-counselors/:id", async (req, res) => {
+router.get("/center-counselors/:id", cors(), async (req, res) => {
   getAll = await Counselor.findAll({
     where: {
       center_id: req.params.id,
@@ -112,7 +112,7 @@ router.get("/center-counselors/:id", async (req, res) => {
 });
 
 // Return a specific center data api/get/center/(center ID)
-router.get("/center/:id", async (req, res) => {
+router.get("/center/:id", cors(), async (req, res) => {
   getAll = await Center.findAll({
     where: {
       id: req.params.id,
@@ -126,7 +126,7 @@ router.get("/center/:id", async (req, res) => {
 });
 
 // Return all notes from a specific counselor /api/get/counselor-notes/(counselor ID)
-router.get("/counselor-notes/:id", async (req, res) => {
+router.get("/counselor-notes/:id", cors(), async (req, res) => {
   getAll = await Counselor.findAll({
     where: {
       id: req.params.id,
@@ -156,7 +156,7 @@ router.get("/resident-notes/:id", cors(), async (req, res) => {
 });
 
 // Return all notes /api/get/notes
-router.get("/notes", async (req, res) => {
+router.get("/notes", cors(), async (req, res) => {
   getAll = await Note.findAll({
     raw: true,
   });

@@ -97,7 +97,7 @@ router.post("/login", cors(), async (req, res) => {
   }
 });
 
-router.get("/login", async (req, res) => {
+router.get("/login", cors(), async (req, res) => {
   try {
     const verify = jwt.verify(req.body, "bob");
 
@@ -166,7 +166,7 @@ router.post("/newuser", cors(), async (req, res) => {
 });
 
 // Logout route /api/log/logout
-router.post("/logout", async (req, res) => {
+router.post("/logout", cors(), async (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end;

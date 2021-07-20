@@ -4,13 +4,14 @@ require("dotenv").config();
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 //const transporter = require("../config/nodemailer");
+const cors = require('cors')
 
 // ---------- Uncomment When NOTE Model has been Added --------------
 
 // Routes all defined on /api/note
 
 // Create a new note /api/note/create
-router.post("/create", async (req, res) => {
+router.post("/create", cors(), async (req, res) => {
   try {
     newNote = await Note.create({
       counselor_id: req.body.counselor_id,
@@ -27,7 +28,7 @@ router.post("/create", async (req, res) => {
 });
 
 // Create a new note /api/note/create
-router.post("/update", async (req, res) => {
+router.post("/update", cors(), async (req, res) => {
   newNote = await Note.update(
     {
       where: {
@@ -44,7 +45,7 @@ router.post("/update", async (req, res) => {
 });
 
 // Create a new note /api/note/create
-router.delete("/delete", async (req, res) => {
+router.delete("/delete", cors(), async (req, res) => {
   newNote = await Note.destroy({
     where: {
       id: req.params.id,
