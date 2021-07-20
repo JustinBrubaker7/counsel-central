@@ -37,7 +37,7 @@ const NoteNew = () => {
 
     //validation
 
-    fetch('http://localhost:3001/api/note/create', {
+    fetch('https://calm-plains-23222.herokuapp.com/api/note/create', {
       method: 'POST',
       body: JSON.stringify({
         counselor_id: authCtx.id,

@@ -80,7 +80,7 @@ export const AuthContextProvider = (props) => {
 
     const verifyCredentials = async (token) => {
         //console.log(token)
-        await fetch('http://localhost:3001/api/auth/checktoken', {
+        await fetch('https://calm-plains-23222.herokuapp.com/api/auth/checktoken', {
             method: "POST",
             body: JSON.stringify({
                 token: token

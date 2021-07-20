@@ -44,7 +44,7 @@ export default function RegisterForm() {
 
 
 
-    fetch('http://localhost:3001/api/center', {
+    fetch('https://calm-plains-23222.herokuapp.com/api/center', {
       method: "POST",
       body: JSON.stringify({
         name: enteredCenterName,

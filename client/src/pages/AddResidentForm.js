@@ -80,7 +80,7 @@ const AddResidentForm = () => {
     const enteredHasDetoxed = hasDetoxedRef.current.value;
     //validation
 
-    fetch('http://localhost:3001/api/resident/create', {
+    fetch('https://calm-plains-23222.herokuapp.com/api/resident/create', {
       method: 'POST',
       body: JSON.stringify({
         center_id: authCtx.center_id,

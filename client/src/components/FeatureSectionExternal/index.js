@@ -43,7 +43,7 @@ export default function FeatureSectionExternal() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-extrabold text-gray-900">All-in-one platform</h2>
           <p className="mt-4 text-lg text-gray-500">
-            The perfect software for your center or program to manage, care for, and help.
+            The perfect software for your center or program to manage, care for, and help you residents more effectivly.
           </p>
         </div>
         <dl className="mt-12 space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-4 lg:gap-x-8">

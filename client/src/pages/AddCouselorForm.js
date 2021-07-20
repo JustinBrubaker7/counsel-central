@@ -20,7 +20,7 @@ const AddCouselorForm = () => {
     const centerId = authCtx.center_id
     //validation
 
-    fetch('http://localhost:3001/api/log/newuser', {
+    fetch('https://calm-plains-23222.herokuapp.com/api/log/newuser', {
       method: 'POST',
       body: JSON.stringify({
         email: enteredEmail,

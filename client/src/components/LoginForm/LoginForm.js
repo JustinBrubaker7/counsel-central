@@ -21,7 +21,7 @@ export default function LoginForm() {
 
     //validation
 
-    fetch('http://localhost:3001/api/log/login', {
+    fetch('https://calm-plains-23222.herokuapp.com/api/log/login', {
       method: 'POST',
       body: JSON.stringify({
         email: enteredEmail,
