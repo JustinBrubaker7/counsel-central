@@ -17,7 +17,7 @@ const Dashboard = () => {
 
     async function fetchCaseloadHandler(id) {
         const response = await fetch(
-            `http://localhost:3001/api/get/center-residents/${id}`
+            `https://calm-plains-23222.herokuapp.com/api/get/center-residents/${id}`
         );
         const data = await response.json();
         setResidents(data);

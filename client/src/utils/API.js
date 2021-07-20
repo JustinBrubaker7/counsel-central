@@ -12,29 +12,29 @@ export default {
   },
 
   getPoplog: function () {
-    return axios.get("http://localhost:3001/api/get/resident");
+    return axios.get("https://calm-plains-23222.herokuapp.com/api/get/resident");
   },
 
   //gets all residents that belong to the couselor | pass in the counselor ID
   getResident: function (id) {
-    return axios.get(`http://localhost:3001/api/get/counselor-residents/${id}`);
+    return axios.get(`https://calm-plains-23222.herokuapp.com/api/get/counselor-residents/${id}`);
   },
 
   getResidents: function (id) {
-    return axios.get(`http://localhost:3001/api/get/center-residents/${id}`);
+    return axios.get(`https://calm-plains-23222.herokuapp.com/api/get/center-residents/${id}`);
   },
 
   //get notes by resident ID
   getNotes: function (id) {
-    return axios.get(`http://localhost:3001/api/get/resident-notes/${id}`);
+    return axios.get(`https://calm-plains-23222.herokuapp.com/api/get/resident-notes/${id}`);
   },
 
   //getss all counselors at a given center by ID
   getCounselors: function (id) {
-    return axios.get(`http://localhost:3001/api/get/center-counselors/${id}`);
+    return axios.get(`https://calm-plains-23222.herokuapp.com/api/get/center-counselors/${id}`);
   },
   getSingleResident: function (id) {
-    return axios.get(`http://localhost:3001/api/get/resident/${id}`);
+    return axios.get(`https://calm-plains-23222.herokuapp.com/api/get/resident/${id}`);
   },
 
   getCaseload: function () {
@@ -61,6 +61,6 @@ export default {
   },
 
   getEvents: function (id, centerID) {
-    return axios.get(`http://localhost:3001/api/date/get/${id}/${centerID}`);
+    return axios.get(`https://calm-plains-23222.herokuapp.com/api/date/get/${id}/${centerID}`);
   },
 };

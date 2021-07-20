@@ -36,7 +36,7 @@ const NewCounsleor = () => {
 
     const verifyCredentials = async (token) => {
         //console.log(token)
-        await fetch('http://localhost:3001/api/auth/checktoken', {
+        await fetch('https://calm-plains-23222.herokuapp.com/api/auth/checktoken', {
             method: "POST",
             body: JSON.stringify({
                 token: token
@@ -88,7 +88,7 @@ const NewCounsleor = () => {
         const enteredPasswordConfirm = passowrdConfirmRef.current.value;
 
 
-        await fetch('http://localhost:3001/api/log/signup', {
+        await fetch('https://calm-plains-23222.herokuapp.com/api/log/signup', {
             headers: {
                 'Content-Type': 'application/json'
             },

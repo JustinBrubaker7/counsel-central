@@ -14,7 +14,7 @@ const Caseload = () => {
 
   async function fetchCaseloadHandler(id) {
     const response = await fetch(
-      `http://localhost:3001/api/get/counselor-residents/${id}`
+      `https://calm-plains-23222.herokuapp.com/api/get/counselor-residents/${id}`
     );
     const data = await response.json();
     setResidents(data);
