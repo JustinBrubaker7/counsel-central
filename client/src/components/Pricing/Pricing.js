@@ -2,16 +2,16 @@
 import { CheckIcon } from '@heroicons/react/outline'
 
 const features = [
-  'Vitae in pulvinar odio id utobortis in inter.',
-  'Sed sed id viverra viverra augue eget massa.',
-  'Urna, gravida amet, a, integer venenatis.',
-  'Lobortis sed pharetra amet vitae eleifend.',
-  'Ullamcorper blandit a consequat donec elit aoreet.',
-  'Dolor quo assumenda.',
-  'Esse rerum distinctio maiores maiores.',
-  'Eos enim officiis ratione.',
-  'Tempore molestiae aliquid excepturi.',
-  'Perspiciatis eveniet inventore eum et aliquam.',
+  'Logging Counseling Sessions',
+  'Viewing Your Caseload',
+  'Viewing Every Resident In Your Program',
+  'Invite Counselors To Join Easily',
+  'One Easy Price',
+  'Always Safe and Secure',
+  'Easy To Use',
+  'Center Event Planning',
+  'View Resident Proggress and Track Notes',
+  'Chat With Other Counselors',
 ]
 
 export default function Pricing() {
@@ -25,11 +25,11 @@ export default function Pricing() {
               <span className="text-honolulu">$199 a month</span>
             </h1>
             <p className="mt-5 text-xl text-gray-500">
-              Includes every feature we offer plus unlimited projects and unlimited users.
+              Every feature we offer for one low price!
             </p>
           </div>
           <a
-            href="/"
+            href="/register"
             className="mt-8 w-full bg-honolulu border border-transparent px-5 py-3 inline-flex items-center justify-center text-base font-medium rounded-md text-white hover:bg-honolulu-dark sm:mt-10 sm:w-auto xl:mt-0"
           >
             Get started today
@@ -40,8 +40,7 @@ export default function Pricing() {
             <h2 className="text-base font-semibold text-honolulu tracking-wide uppercase">Counseling made easy</h2>
             <p className="mt-2 text-3xl font-extrabold text-gray-900">All-in-one platform</p>
             <p className="mt-4 text-lg text-gray-500">
-              Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla
-              nec. Urna, sed a lectus elementum blandit et.
+              We know you care about those in your program. We care just as much about you. That is why we made Counsel Central. We had you in mind. Making counseling easiser.
             </p>
           </div>
           <div className="mt-4 sm:mt-8 md:mt-10 md:grid md:grid-cols-2 md:gap-x-8 xl:mt-0 xl:col-span-2">
